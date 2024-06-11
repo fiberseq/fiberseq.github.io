@@ -1,11 +1,7 @@
 # Summary
-
-[fibertools](README.md)
-
+[Home](README.md)
 ---
-
 [Quick start guide](quick-start.md)
-
 ---
 - [fibertools](fibertools/fibertools.md)
     - [Creating a Fiber-seq BAM](fibertools/creating/creating.md)
@@ -19,20 +15,12 @@
     - [Help pages for all `fibertools` subcommands](fibertools/help.md)
     - [pyft: Python bindings](fibertools/pyft.md)
     - [Installation](fibertools/install.md)
-
-
-
 ---
-
-- [Glossary](glossary.md)
-
----
-
 - [The FIRE method](fire/fire.md)
     - [Training](fire/training.md)
     - [Aggregation and peak calling](fire/aggregation.md)
     - [Identifying haplotype-selective peaks](fire/haplotype-selective.md)
-
 ---
-
+- [Glossary](glossary.md)
+---
 - [Cite](cite.md)

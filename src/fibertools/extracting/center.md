@@ -4,7 +4,7 @@ This command centers Fiber-seq data around given reference positions. This is us
 
 ## Inputs and options
 
-See the [help message](./ft-center-help.md) for details.
+See the [help message](../help.md#ft-center) for details.
 
 ## Output description
 

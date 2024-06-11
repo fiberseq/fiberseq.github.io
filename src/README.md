@@ -16,5 +16,5 @@ Some **Key features** include:
 * [Centering](extracting/center.md) Fiber-seq results around a given position.
 * [pyft](pyft.md): Python bindings for `fibertools`
 
-A quick start guide can be found [here](quick-start.md), and a complete list of subcommands and their help pages can be found [here](help.md).
+A quick start guide can be found [here](quick-start.md).
 

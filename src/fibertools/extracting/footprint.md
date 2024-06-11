@@ -1,5 +1,7 @@
 # `ft footprint`
 
+
+
 ## Usage
 ```bash
 ft footprint [OPTIONS] <BAM> --bed <BED> --yaml <YAML>
@@ -18,6 +20,9 @@ modules:
   - [29, 35]
 ```
 Modules must start at zero, end at the length of the motif, be sorted, and be contiguous with one another. At most 15 modules are allowed, and the intervals are 0-based, half-open (like `BED`).
+
+
+See the [help message](../help.md#ft-footprint) for details.
 
 ## Description of output columns
 

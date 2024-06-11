@@ -8,7 +8,7 @@ HiFi kinetics are required for predicting [m6A](glossary.md#m6a) with `fibertool
 
 
 ### Predict m6A and infer nucleosomes
-To create useable Fiber-seq data you must first call m6A base-mods on the PacBio CCS bam using `fibertools`. First [install fibertools](install/install.md) and then process your bam file using the prediction command. 
+To create useable Fiber-seq data you must first call m6A base-mods on the PacBio CCS bam using `fibertools`. First [install fibertools](fibertools/install.md) and then process your bam file using the prediction command. 
 
 ```bash
 ft predict-m6a -t 16 input.ccs.bam output.fiberseq.bam 
@@ -23,7 +23,7 @@ We recommend aligning with [pbmm2](https://github.com/PacificBiosciences/pbmm2) 
 
 Alternatively, we have written a [snakemake pipeline](https://github.com/mrvollger/k-mer-variant-phasing) to align and phase Fiber-seq data; however, this pipeline is not officially supported.
 
-After this point you will have a Fiber-seq BAM file that is compatible with all the [extraction](extracting/extracting.md) commands in `fibertools`.
+After this point you will have a Fiber-seq BAM file that is compatible with all the [extraction](fibertools/extracting/extracting.md) commands in `fibertools`.
 
 ### Fiber-seq peaks and UCSC browser tracks
 Once you have a phased bam file, you can identify [Fiber-seq inferred regulatory elements (FIREs)](glossary.md#fires) to call Fiber-seq peaks and make a UCSC trackHub. Please see the [FIRE repository](https://github.com/fiberseq/FIRE) for more details.
@@ -36,7 +36,7 @@ Once you have a phased bam file, you can identify [Fiber-seq inferred regulatory
 
 ### Infer nucleosomes and MSPs
 
-Once you have CpG and m6A information in your ONT BAM file, you can use `ft add-nucleosomes` to infer nucleosomes and MSPs. With Dorado, we find the best results when restricting to m6A modifications with an ML score of 250 or higher.
+Once you have CpG and m6A information in your ONT BAM file, you can use [`ft add-nucleosomes`](fibertools/help.md#ft-add-nucleosomes) to infer nucleosomes and MSPs. With Dorado, we find the best results when restricting to m6A modifications with an ML score of 250 or higher.
 ```bash
 ft add-nucleosomes --ml 250 input.bam output.bam
 ```
@@ -46,7 +46,7 @@ You can either use [Dorado](https://github.com/nanoporetech/dorado) to align you
 
 We recommend using [WhatsHap](https://whatshap.readthedocs.io/en/latest/) for phasing ONT data. Please see their documentation for more information.
 
-After this point you will have a Fiber-seq BAM file that is compatible with all the [extraction](extracting/extracting.md) commands in `fibertools`.
+After this point you will have a Fiber-seq BAM file that is compatible with all the [extraction](fibertools/extracting/extracting.md) commands in `fibertools`.
 
 ### Fiber-seq peaks and UCSC browser tracks
 Some users report reasonable success in applying the [FIRE pipeline](https://github.com/fiberseq/FIRE) to ONT data. However, **please note that ..FIRE models were not trained or validated for ONT data.** With that said all the instructions for applying the ..FIRE pipeline to a PacBio BAM should work for an ONT BAM as well.

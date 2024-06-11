@@ -4,7 +4,7 @@ Extract Fiber-seq data into plain text files
 
 ## Inputs and options
 
-See the [help message](./ft-extract-help.md) for details.
+See the [help message](../help.md#ft-extract) for details.
 
 ## Output description
 

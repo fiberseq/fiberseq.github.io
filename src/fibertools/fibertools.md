@@ -10,5 +10,6 @@
 [![crates.io downloads](https://img.shields.io/crates/d/fibertools-rs?color=orange&label=downloads)](https://crates.io/crates/fibertools-rs)
 [![DOI](https://zenodo.org/badge/517338593.svg)](https://zenodo.org/badge/latestdoi/517338593)
 
+Think of `fibertools` as the `samtools` of Fiber-seq data. A command line tool for creating, filtering, interacting, and extracting from Fiber-seq BAM files.
 
 A complete list of subcommands and their help pages can be found [here](help.md).

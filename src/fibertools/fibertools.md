@@ -1,6 +1,6 @@
 
 <p align="center">
-<img src="images/fiber_tools_teal.png" alt="fibertools-rs dark logo" width="200" class="center"/>
+<img src="../images/fiber_tools_teal.png" alt="fibertools-rs dark logo" width="200" class="center"/>
 </p>
 
 [![Actions Status](https://github.com/fiberseq/fibertools-rs/workflows/CI/badge.svg)](https://github.com/fiberseq/fibertools-rs/actions)

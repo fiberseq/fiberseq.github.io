@@ -10,9 +10,13 @@
 [![crates.io downloads](https://img.shields.io/crates/d/fibertools-rs?color=orange&label=downloads)](https://crates.io/crates/fibertools-rs)
 [![DOI](https://zenodo.org/badge/517338593.svg)](https://zenodo.org/badge/latestdoi/517338593)
 
-This is the book for `fibertools` (`ft`) which is a CLI tool for **creating and interacting with Fiber-seq BAM** files. 
+This is the book for the computational tools of [Fiber-seq](glossary.md#fiber-seq) which describes the two major software tools:
+1) `fibertools` (`ft`) which is a CLI tool for **creating and interacting with Fiber-seq BAM** files. 
+    * the `samtools` of [Fiber-seq](glossary.md#fiber-seq)
+2) [**<ins>F</ins>iber-seq <ins>I</ins>nferred <ins>R</ins>egulatory <ins>E</ins>lements**](fire/fire.md) which is a method for identifying regulatory elements on individual [fibers](glossary.md#fiber-seq-read-or-fiber) and peak calling.
+    * the `MACS2` of [Fiber-seq](glossary.md#fiber-seq)
 
-**Key features** include:
+Some **Key features** include:
 * [Predicting m6A](creatings/predict.md) sites from PacBio Fiber-seq data
 * [Identifying FIREs](creating/fire.md) (**<ins>F</ins>iber-seq <ins>I</ins>nferred <ins>R</ins>egulatory <ins>E</ins>lements**)
 * [Extracting](extracting/extract.md) Fiber-seq results into plain text files.

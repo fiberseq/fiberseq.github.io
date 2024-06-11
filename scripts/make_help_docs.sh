@@ -3,6 +3,7 @@
 echo $LIBTORCH
 export LD_LIBRARY_PATH=${LIBTORCH}/lib:$LD_LIBRARY_PATH
 export DYLD_LIBRARY_PATH=${LIBTORCH}/lib:$LD_LIBRARY_PATH
+FT=../fibertools-rs/target/debug/ft
 
 out="src/help.md"
 echo "# Help pages for fibertools subcommands" >$out
@@ -15,7 +16,7 @@ for subcommand in "" "predict-m6a" "fire" "extract" "center" "add-nucleosomes" "
 
     echo "## \`ft $subcommand\`" >>$out
     echo '```console' >>$out
-    cargo run -- $subcommand -h >>$out
+    $FT $subcommand -h >>$out
     echo '```' >>$out
     echo "" >>$out
 done

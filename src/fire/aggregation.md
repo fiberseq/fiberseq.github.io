@@ -4,7 +4,7 @@
 
 The FIRE score (\\(S_g\\)) for a position in the genome (\\(g\\)) is calculated using the following formula:
 
- \\[ S_g=-\frac{50}{R_g} \\sum_{i=1}^{C_g} \log_{10}(1-min(EP_i , 0.99)) \\]
+$$ S_g=-\frac{50}{R_g} \\sum_{i=1}^{C_g} \log_{10}(1-min(EP_i , 0.99)) $$
 
 where \\(C_g\\) is the number of FIRE elements at the \\(g\\)th position, \\(R_g\\) is the number of Fiber-seq reads at the \\(g\\)th position, and \\(EP_i\\) is the estimated precision of the \\(i\\)th FIRE element at the \\(g\\)th position. The estimated precision of each FIRE element is thresholded at 0.99, such that the FIRE score takes on values between 0 and 100. Regions covered by less than four FIRE elements (i.e., if \\(C_g < 4\\))  are not scored and are given a value of negative one. 
 

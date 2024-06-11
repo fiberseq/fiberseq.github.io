@@ -12,7 +12,7 @@ To carry out semi-supervised training, we used an established method, Mokapot (F
 
 We cannot compute the precision associated with a particular XGBoost score because we do not have access to a set of clean-positive labels. Instead, we define a notion of “estimated precision” using a balanced held-out test set of mixed-positive and negative labels (20% of the data). We defined the estimated precision (EP) of a FIRE element to be
 
-\\[ EP = 1 - \frac{FP+1}{TMP} \\]
+$$ EP = 1 - \frac{FP+1}{TMP} $$
 
 where TMP is the number of “true” identifications from the mixed positive labels with at least that element’s XGBoost score, and FP is the number of false positive identifications from negative labels with at least that element’s XGBoost score. We add a pseudo count of one to the numerator of false positive identifications so as to prevent liberal estimates for smaller collections of identifications (Fondrie & Noble, 2021).
 

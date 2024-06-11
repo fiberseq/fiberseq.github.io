@@ -18,6 +18,8 @@ preferred-dark-theme = "navy"
 git-repository-url = "https://github.com/fiberseq/fiberseq.github.io"
 git-repository-icon = "fa-github"
 edit-url-template = "https://github.com/fiberseq/fiberseq.github.io/edit/main/{path}"
+mathjax-support = true
+
 
 [output.html.fold]
 enable = true    # whether or not to enable section folding

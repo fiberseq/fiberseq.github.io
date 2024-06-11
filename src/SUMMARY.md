@@ -30,6 +30,13 @@
 
 ---
 
+- [The FIRE method](fire/fire.md)
+    - [Training](fire/training.md)
+    - [Aggregation and peak calling](fire/aggregation.md)
+    - [Identifying haplotype-selective peaks](fire/haplotype-selective.md)
+
+---
+
 - [Help pages for all `fibertools` subcommands](help.md)
 - [pyft: Python bindings](pyft.md)
 - [Cite](cite.md)

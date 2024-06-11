@@ -12,4 +12,10 @@
 
 Think of `fibertools` as the `samtools` of Fiber-seq data. A command line tool for creating, filtering, interacting, and extracting from Fiber-seq BAM files.
 
+This chapter covers:
+- [Creating a Fiber-seq BAM](creating/creating.md)
+- [Extracting from a Fiber-seq BAM](extracting/extracting.md)
+- [installing `fibertools`](install.md)
+- [pyft: Python bindings](pyft.md)
+
 A complete list of subcommands and their help pages can be found [here](help.md).

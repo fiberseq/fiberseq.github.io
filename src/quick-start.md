@@ -1,4 +1,4 @@
-# Quick start for `fibertools`
+# The quick start guide for analyzing Fiber-seq data
 
 <!-- toc -->
 

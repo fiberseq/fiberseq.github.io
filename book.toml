@@ -34,5 +34,6 @@ max-level = 4
 #command = "python auto-links.py"
 
 [output.linkcheck]
+optional = true # allows passing the github actions even if not installed
 #follow-web-links = true
 warning-policy = "warn"

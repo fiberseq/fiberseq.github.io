@@ -11,7 +11,7 @@ This is the book for the computational tools of [Fiber-seq](glossary.md#fiber-se
 
 Some **Key features** include:
 * [Predicting m6A](fibertools/creating/predict.md) sites from PacBio Fiber-seq data
-* [Identifying FIREs](fibertools/creating/fire.md) (**<ins>F</ins>iber-seq <ins>I</ins>nferred <ins>R</ins>egulatory <ins>E</ins>lements**)
+* [FIRE](fire/fire.md) (**<ins>F</ins>iber-seq <ins>I</ins>nferred <ins>R</ins>egulatory <ins>E</ins>lements**)
 * [Extracting](fibertools/extracting/extract.md) Fiber-seq results into plain text files.
 * [Centering](fibertools/extracting/center.md) Fiber-seq results around a given position.
 * [pyft](fibertools/pyft.md): Python bindings for `fibertools`

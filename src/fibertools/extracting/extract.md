@@ -9,7 +9,7 @@ See the [help message](../help.md#ft-extract) for details.
 ## Output description
 
 All outputs to `ft extract` can be (and should be) compressed by simply adding the `.gz` extension.
-For example, `ft extract input.bam --m6a m6a.bed.gz` will output a compressed bed12 file.
+For example, `ft extract input.bam --m6a m6a.bed.gz` will output a compressed bed12 file. Use `-` to output to `stdout`, e.g. `ft extract input.bam --m6a -`.
 
 ### Shared Output columns:
 

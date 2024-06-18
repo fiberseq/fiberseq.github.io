@@ -20,3 +20,4 @@ A quick start guide can be found [here](quick-start.md).
 
 **You can help improve this book! And it is a easy as clicking the edit button in the top right.**
 
+Adding stuff here

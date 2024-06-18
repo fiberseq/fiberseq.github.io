@@ -21,7 +21,7 @@ This will both make m6A calls and identify [nucleosomes](glossary.md#inferred-nu
 ### Alignment and phasing
 We recommend aligning with [pbmm2](https://github.com/PacificBiosciences/pbmm2) and phasing with [HiPhase](https://github.com/PacificBiosciences/hiphase). Please see their respective documentation for more information.
 
-Alternatively, we have written a [snakemake pipeline](https://github.com/mrvollger/k-mer-variant-phasing) to align and phase Fiber-seq data; however, this pipeline is not officially supported.
+Alternatively, we have written a [snakemake pipeline](https://github.com/mrvollger/k-mer-variant-phasing) to align and phase Fiber-seq data; however, this pipeline is not officially supported outside of our lab at this time.
 
 After this point you will have a Fiber-seq BAM file that is compatible with all the [extraction](fibertools/extracting/extracting.md) commands in `fibertools`.
 

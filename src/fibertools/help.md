@@ -18,6 +18,7 @@ Commands:
   pileup            Make a pileup track of Fiber-seq features from a FIRE bam
   clear-kinetics    Remove HiFi kinetics tags from the input bam file
   strip-basemods    Strip out select base modifications
+  ddda-to-m6a       Convert a DddA BAM file to pseudo m6A BAM file
   help              Print this message or the help of the given subcommand(s)
 
 Options:
@@ -53,7 +54,7 @@ Options:
 
 BAM-Options:
   -F, --filter <BIT_FLAG>  BAM bit flags to filter on, equivalent to `-F` in samtools view [default: 0]
-      --ml <MIN_ML_SCORE>  Minium score in the ML tag to use or include in the output [default: 125]
+      --ml <MIN_ML_SCORE>  Minium score in the ML tag to use or include in the output [env: FT_MIN_ML_SCORE=] [default: 125]
 
 Global-Options:
   -t, --threads <THREADS>  Threads [default: 8]
@@ -79,6 +80,8 @@ Arguments:
   [OUT]  Output file (BAM by default, table of MSP features if `--feats-to-text` is used, and bed9 + if `--extract`` is used) [default: -]
 
 Options:
+      --ont                                                                            Use a ONT heuristic adjustment for FIRE calling. This adjusts the observed number of m6A counts by adding pseudo counts to account for the
+                                                                                       single stranded nature of ONT data [env: ONT=]
   -e, --extract                                                                        Output just FIRE elements in bed9 format
       --all                                                                            When extracting bed9 format include all MSPs and nucleosomes
   -f, --feats-to-text                                                                  Output FIREs features for training in a table format
@@ -97,7 +100,7 @@ Options:
 
 BAM-Options:
   -F, --filter <BIT_FLAG>  BAM bit flags to filter on, equivalent to `-F` in samtools view [default: 0]
-      --ml <MIN_ML_SCORE>  Minium score in the ML tag to use or include in the output [default: 125]
+      --ml <MIN_ML_SCORE>  Minium score in the ML tag to use or include in the output [env: FT_MIN_ML_SCORE=] [default: 125]
 
 Global-Options:
   -t, --threads <THREADS>  Threads [default: 8]
@@ -129,7 +132,7 @@ Options:
 
 BAM-Options:
   -F, --filter <BIT_FLAG>  BAM bit flags to filter on, equivalent to `-F` in samtools view [default: 0]
-      --ml <MIN_ML_SCORE>  Minium score in the ML tag to use or include in the output [default: 125]
+      --ml <MIN_ML_SCORE>  Minium score in the ML tag to use or include in the output [env: FT_MIN_ML_SCORE=] [default: 125]
 
 Global-Options:
   -t, --threads <THREADS>  Threads [default: 8]
@@ -153,9 +156,9 @@ Arguments:
   [BAM]  Input BAM file. If no path is provided stdin is used. For m6A prediction, this should be a HiFi bam file with kinetics data. For other commands, this should be a bam file with m6A calls [default: -]
 
 Options:
-  -b, --bed <BED>    Bed file on which to center fiberseq reads. Data is adjusted to the start position of the bed file and corrected for strand if the strand is indicated in the 6th column of the bed file. The 4th
-                     column will also be checked for the strand but only after the 6th is. If you include strand information in the 4th (or 6th) column it will orient data accordingly and use the end position of bed
-                     record instead of the start if on the minus strand. This means that profiles of motifs in both the forward and minus orientation will align to the same central position
+  -b, --bed <BED>    Bed file on which to center fiberseq reads. Data is adjusted to the start position of the bed file and corrected for strand if the strand is indicated in the 6th column of the bed file. The 4th column will
+                     also be checked for the strand but only after the 6th is. If you include strand information in the 4th (or 6th) column it will orient data accordingly and use the end position of bed record instead of the
+                     start if on the minus strand. This means that profiles of motifs in both the forward and minus orientation will align to the same central position
   -d, --dist <DIST>  Set a maximum distance from the start of the motif to keep a feature
   -w, --wide         Provide data in wide format, one row per read
   -r, --reference    Return relative reference position instead of relative molecular position
@@ -165,7 +168,7 @@ Options:
 
 BAM-Options:
   -F, --filter <BIT_FLAG>  BAM bit flags to filter on, equivalent to `-F` in samtools view [default: 0]
-      --ml <MIN_ML_SCORE>  Minium score in the ML tag to use or include in the output [default: 125]
+      --ml <MIN_ML_SCORE>  Minium score in the ML tag to use or include in the output [env: FT_MIN_ML_SCORE=] [default: 125]
 
 Global-Options:
   -t, --threads <THREADS>  Threads [default: 8]
@@ -195,7 +198,7 @@ Options:
 
 BAM-Options:
   -F, --filter <BIT_FLAG>  BAM bit flags to filter on, equivalent to `-F` in samtools view [default: 0]
-      --ml <MIN_ML_SCORE>  Minium score in the ML tag to use or include in the output [default: 125]
+      --ml <MIN_ML_SCORE>  Minium score in the ML tag to use or include in the output [env: FT_MIN_ML_SCORE=] [default: 125]
 
 Global-Options:
   -t, --threads <THREADS>  Threads [default: 8]
@@ -223,7 +226,7 @@ Options:
 
 BAM-Options:
   -F, --filter <BIT_FLAG>  BAM bit flags to filter on, equivalent to `-F` in samtools view [default: 0]
-      --ml <MIN_ML_SCORE>  Minium score in the ML tag to use or include in the output [default: 125]
+      --ml <MIN_ML_SCORE>  Minium score in the ML tag to use or include in the output [env: FT_MIN_ML_SCORE=] [default: 125]
 
 Global-Options:
   -t, --threads <THREADS>  Threads [default: 8]
@@ -249,7 +252,7 @@ Options:
 
 BAM-Options:
   -F, --filter <BIT_FLAG>  BAM bit flags to filter on, equivalent to `-F` in samtools view [default: 0]
-      --ml <MIN_ML_SCORE>  Minium score in the ML tag to use or include in the output [default: 125]
+      --ml <MIN_ML_SCORE>  Minium score in the ML tag to use or include in the output [env: FT_MIN_ML_SCORE=] [default: 125]
 
 Global-Options:
   -t, --threads <THREADS>  Threads [default: 8]
@@ -276,7 +279,7 @@ Options:
 
 BAM-Options:
   -F, --filter <BIT_FLAG>  BAM bit flags to filter on, equivalent to `-F` in samtools view [default: 0]
-      --ml <MIN_ML_SCORE>  Minium score in the ML tag to use or include in the output [default: 125]
+      --ml <MIN_ML_SCORE>  Minium score in the ML tag to use or include in the output [env: FT_MIN_ML_SCORE=] [default: 125]
 
 Global-Options:
   -t, --threads <THREADS>  Threads [default: 8]
@@ -303,7 +306,7 @@ Options:
 
 BAM-Options:
   -F, --filter <BIT_FLAG>  BAM bit flags to filter on, equivalent to `-F` in samtools view [default: 0]
-      --ml <MIN_ML_SCORE>  Minium score in the ML tag to use or include in the output [default: 125]
+      --ml <MIN_ML_SCORE>  Minium score in the ML tag to use or include in the output [env: FT_MIN_ML_SCORE=] [default: 125]
 
 Global-Options:
   -t, --threads <THREADS>  Threads [default: 8]
@@ -321,7 +324,7 @@ Usage: ft pileup [OPTIONS] [BAM] [RGN]
 
 Arguments:
   [BAM]  Input BAM file. If no path is provided stdin is used. For m6A prediction, this should be a HiFi bam file with kinetics data. For other commands, this should be a bam file with m6A calls [default: -]
-  [RGN]  Region string to make a pileup of. If not provided will make a pileup of the whole genome
+  [RGN]  Region string to make a pileup of. e.g. chr1:1-1000 or chr1:1-1,000 If not provided will make a pileup of the whole genome
 
 Options:
   -o, --out <OUT>   Output file [default: -]
@@ -335,7 +338,7 @@ Options:
 
 BAM-Options:
   -F, --filter <BIT_FLAG>  BAM bit flags to filter on, equivalent to `-F` in samtools view [default: 0]
-      --ml <MIN_ML_SCORE>  Minium score in the ML tag to use or include in the output [default: 125]
+      --ml <MIN_ML_SCORE>  Minium score in the ML tag to use or include in the output [env: FT_MIN_ML_SCORE=] [default: 125]
 
 Global-Options:
   -t, --threads <THREADS>  Threads [default: 8]

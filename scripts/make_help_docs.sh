@@ -5,7 +5,7 @@ export LD_LIBRARY_PATH=${LIBTORCH}/lib:$LD_LIBRARY_PATH
 export DYLD_LIBRARY_PATH=${LIBTORCH}/lib:$LD_LIBRARY_PATH
 FT=../fibertools-rs/target/debug/ft
 
-out="src/help.md"
+out="src/fibertools/help.md"
 echo "# Help pages for fibertools subcommands" >$out
 echo "<!-- toc -->" >>$out
 echo "" >>$out

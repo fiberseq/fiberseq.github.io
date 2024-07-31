@@ -30,7 +30,7 @@
 ---
 
 - [Glossary](glossary.md)
-
+- [Fiberseq BAM format](fiberseq-bam.md)
 ---
 
 - [Cite](cite.md)

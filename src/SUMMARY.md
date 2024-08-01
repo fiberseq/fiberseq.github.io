@@ -16,7 +16,7 @@
         - [`ft extract`](fibertools/extracting/extract.md)
         - [`ft center`](fibertools/extracting/center.md)
         - [`ft footprint`](fibertools/extracting/footprint.md)
-    - [Help pages for all `fibertools` subcommands](fibertools/help.md)
+    - [Help pages for `ft` subcommands](fibertools/help.md)
     - [pyft: Python bindings](fibertools/pyft.md)
     - [Installation](fibertools/install.md)
 

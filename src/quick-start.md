@@ -36,9 +36,9 @@ Once you have a phased bam file, you can identify [Fiber-seq inferred regulatory
 
 ### Infer nucleosomes and MSPs
 
-Once you have CpG and m6A information in your ONT BAM file, you can use [`ft add-nucleosomes`](fibertools/help.md#ft-add-nucleosomes) to infer nucleosomes and MSPs. With Dorado, we find the best results when restricting to m6A modifications with an ML score of 250 or higher.
+Once you have CpG and m6A information in your ONT BAM file, you can use [`ft add-nucleosomes`](fibertools/help.md#ft-add-nucleosomes) to infer nucleosomes and MSPs. With Dorado, we find the best results when restricting to the 90% of calls that `dorado` is most confident in as determined by [modkit](https://github.com/nanoporetech/modkit).
 ```bash
-ft add-nucleosomes --ml 250 input.bam output.bam
+modkit call-mods -p 0.1 input.bam - | ft add-nucleosomes - output.bam
 ```
 
 ### Alignment and phasing 
@@ -49,4 +49,4 @@ We recommend using [WhatsHap](https://whatshap.readthedocs.io/en/latest/) for ph
 After this point, you will have a Fiber-seq BAM file that is compatible with all the [extraction](fibertools/extracting/extracting.md) commands in `fibertools`.
 
 ### Fiber-seq peaks and UCSC browser tracks
-Some users report reasonable success in applying the [FIRE pipeline](https://github.com/fiberseq/FIRE) to ONT data. However, **please note that FIRE models were not trained or validated for ONT data.** With that said, all the instructions for applying the FIRE pipeline to a PacBio BAM should work for an ONT BAM as well.
+Some users report reasonable success in applying the [FIRE pipeline](https://github.com/fiberseq/FIRE) to ONT data. However, **please note that FIRE models were not trained or validated for ONT data.** With that said, we have developed a heuristic for FIRE that appears to work very well with ONT data. To enable this add `ont: true` to your `config.yaml` file when setting up your FIRE run. 

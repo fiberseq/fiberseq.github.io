@@ -31,6 +31,11 @@
 
 - [Glossary](glossary.md)
 - [Fiber-seq BAM format](fiberseq-bam.md)
+
 ---
 
 - [Cite](cite.md)
+
+---
+- [Analyses](analyses.md)
+    - [ONT Fiber-seq Analysis](analyses/ont.md)

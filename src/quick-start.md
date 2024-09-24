@@ -34,9 +34,15 @@ Once you have a phased bam file, you can identify [Fiber-seq inferred regulatory
 
 **ft predict-m6a** does not include a model for ONT data; however, you can use software, such as [Dorado](https://github.com/nanoporetech/dorado), to add CpG and m6A to your ONT BAM file.
 
+If you do use Dorado you must then filter the m6A calls with [modkit](https://github.com/nanoporetech/modkit) using a tenth percentile cutoff for each flow-cell independently. This is the only way to get good m6A calls in our experience, and using any hard ML threshold will not hold between flow-cells. Here is an example command:
+```bash
+modkit call-mods -t 8 -p 0.1 input.dorado.bam filtered.dorado.bam
+``` 
+We also show how to apply this filter and call nucleosomes in one line in the next section.
+
 ### Infer nucleosomes and MSPs
 
-Once you have CpG and m6A information in your ONT BAM file, you can use [`ft add-nucleosomes`](fibertools/help.md#ft-add-nucleosomes) to infer nucleosomes and MSPs. With Dorado, we find the best results when restricting to the 90% of calls that `dorado` is most confident in as determined by [modkit](https://github.com/nanoporetech/modkit).
+Once you have CpG and m6A information in your filtered ONT BAM file, you can use [`ft add-nucleosomes`](fibertools/help.md#ft-add-nucleosomes) to infer nucleosomes and MSPs. With Dorado, we find the best results when restricting to the 90% of calls that `dorado` is most confident in as determined by [modkit](https://github.com/nanoporetech/modkit).
 ```bash
 modkit call-mods -p 0.1 input.bam - | ft add-nucleosomes - output.bam
 ```

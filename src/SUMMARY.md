@@ -27,10 +27,10 @@
 - [FIRE](fire/fire.md)
     - [Running and installing](fire/run.md)
     - [Outputs](fire/outputs.md)
-    - [Methods](fire/methods.md)
-        - [Training](fire/training.md)
-        - [Aggregation and peak calling](fire/aggregation.md)
-        - [Identifying haplotype-selective peaks](fire/haplotype-selective.md)
+    - [Methods](fire/methods/methods.md)
+        - [Training](fire/methods/training.md)
+        - [Aggregation and peak calling](fire/methods/aggregation.md)
+        - [Identifying haplotype-selective peaks](fire/methods/haplotype-selective.md)
 
 ---
 

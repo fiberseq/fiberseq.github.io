@@ -13,7 +13,6 @@ The FIRE pipeline returns outputs for a sample in the directory `results/{sample
 | additional-outputs/ | Directory containing additional outputs from the FIRE pipeline. |
 
 # More details on the individual outputs
-
 ## The `{sample}.cram` file
 The CRAM file contains all the data used in the FIRE pipeline. It is a CRAM file that can be viewed with IGV or other genome browsers. 
 

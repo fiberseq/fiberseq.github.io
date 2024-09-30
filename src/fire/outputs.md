@@ -40,7 +40,7 @@ The FIRE peaks file has the following columns:
 | pass_coverage | Whether the peak passes coverage filters |
 
 ## The `{sample}-hap-differences.bed.gz` file
-This file primarily contains the same columns as the FIRE peaks file but additionally has a `p_value` column with the results of a Fisher's exact test for the difference in coverage between the two haplotypes, and a `p_adjust` column with the Benjamini-Hochberg adjusted p-value.
+This file primarily contains the same columns as the FIRE peaks file but additionally has a `p_value` column with the results of a Fisher's exact test for the difference in coverage between the two haplotypes, and a `p_adjust` column with the Benjamini-Hochberg adjusted p-value. See the [methods](haplotype-selective.md) for more details.
 
 
 ## The `{sample}-fire-pileup.bed.gz` file

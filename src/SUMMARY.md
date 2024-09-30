@@ -25,6 +25,7 @@
 ---
 
 - [FIRE](fire/fire.md)
+    - [Running and installing](fire/run.md)
     - [Outputs](fire/outputs.md)
     - [Methods](fire/methods.md)
         - [Training](fire/training.md)

@@ -17,6 +17,8 @@ The FIRE pipeline returns outputs for a sample in the directory `results/{sample
 The CRAM file contains all the data used in the FIRE pipeline. It is a CRAM file that can be viewed with IGV or other genome browsers. 
 
 ## The `{sample}-fire-peaks.bed.gz` file
+This is the peak file for the FIRE method. Peaks are called by identifying FIRE score ([methods](aggregation.md)) local-maxima that have FDR values below a threshold. By default, the pipeline reports peaks at a 5% FDR threshold. Once a local-maxima is identified, the start and end positions of the peak are determined by the median start and end positions of the underlying FIRE elements. We also calculate and report wide peaks in the `additional-outputs/` by taking the union of the FIRE peaks and all regions below the FDR threshold and then merging resulting regions that are within one nucleosome (147 bp) of one another.
+
 The FIRE peaks file has the following columns:
 | Column | Description |
 | --- | --- |

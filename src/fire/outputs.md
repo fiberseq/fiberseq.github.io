@@ -12,6 +12,7 @@ The FIRE pipeline returns outputs for a sample in the directory `results/{sample
 | trackHub/ | Directory containing a UCSC trackHub for visualizing all the results of the FIRE pipeline. |
 | additional-outputs/ | Directory containing additional outputs from the FIRE pipeline. |
 
+# More details on the individual outputs
 
 ## The `{sample}.cram` file
 The CRAM file contains all the data used in the FIRE pipeline. It is a CRAM file that can be viewed with IGV or other genome browsers. 
@@ -27,7 +28,7 @@ The FIRE peaks file has the following columns:
 | end | End of the maximum of the peak |
 | coverage | Coverage of the peak |
 | fire_coverage | Coverage of the FIREs in the peak |
-| score | FIRE score of the peak (see ) |
+| score | FIRE score of the peak (see [methods](aggregation.md)) |
 | nuc_coverage | Coverage of the nucleosomes in the peak |
 | msp_coverage | Coverage of the MSPs in the peak |
 | .*_{H1,H2} | Repeats of previous columns but specific for the two haplotypes |

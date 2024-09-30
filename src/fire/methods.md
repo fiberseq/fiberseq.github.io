@@ -1,0 +1,2 @@
+# FIRE methods
+This chapter describes the methods and training used in the FIRE pipeline. There are two major components, identifying per-molecule FIRE elements, and aggregating these elements into peaks.

@@ -13,10 +13,10 @@ The FIRE pipeline returns outputs for a sample in the directory `results/{sample
 | additional-outputs/ | Directory containing additional outputs from the FIRE pipeline. |
 
 
-## The {sample}.cram file
+## The `{sample}.cram` file
+The CRAM file contains all the data used in the FIRE pipeline. It is a CRAM file that can be viewed with IGV or other genome browsers. 
 
-
-## The {sample}-fire-peaks.bed.gz file
+## The `{sample}-fire-peaks.bed.gz` file
 The FIRE peaks file has the following columns:
 | Column | Description |
 | --- | --- |
@@ -39,11 +39,21 @@ The FIRE peaks file has the following columns:
 | FIRE_end_ssd | Standard deviation of the end of the FIREs in the peak |
 | pass_coverage | Whether the peak passes coverage filters |
 
-# The {sample}-hap-differences.bed.gz file
+## The `{sample}-hap-differences.bed.gz` file
 This file primarily contains the same columns as the FIRE peaks file but additionally has a `p_value` column with the results of a Fisher's exact test for the difference in coverage between the two haplotypes, and a `p_adjust` column with the Benjamini-Hochberg adjusted p-value.
 
-## The trackHub directory
+
+## The `{sample}-fire-pileup.bed.gz` file
+This is a BED file containing per-base information on number of FIREs, MSPs, nucleosomes, coverage and more. The columns are calculated using `ft-pileup` and more details can be found in the `ft-pileup` documentation.
+
+## The `{sample}-fire-elements.bed.gz` file
+This file contains the individual FIRE elements in standard BED9 format with additional columns for the haplotype and the precision of the FIRE call.
+
+## The `{sample}-fire-qc.tbl.gz` file
+This file contains quality control metrics for the FIRE CRAM. The results are directly created by `ft-qc` and more details can be found in the `ft-qc` documentation.
+
+## The `trackHub/` directory
 The `trackHub/` directory contains a UCSC trackHub for visualizing all the results of the FIRE pipeline. A description of the trackHub can be found in `trackHub/fire-description.html`. The trackHub can be loaded into UCSC by uploading the trackHub directory to a public facing website and then loading the `hub.txt`'s URL into the UCSC trackHub browser.
 
-## The additional-outputs directory
+## The `additional-outputs/` directory
 The `additional-outputs/` directory contains the following files:

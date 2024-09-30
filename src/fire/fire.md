@@ -1,6 +1,8 @@
 # FIRE: descriptions, methods, and outputs 
 
-For details on running the FIRE pipeline see the [README.md](https://github.com/fiberseq/FIRE).
+For code for running the FIRE pipeline can be found on [GitHub](https://github.com/fiberseq/FIRE), and if you do use FIRE in your work please cite our publication:
+
+> **Vollger, M. R.**, **Swanson, E. G.**, Neph, S. J., Ranchalis, J., Munson, K. M., Ho, C.-H., Sedeño-Cortés, A. E., Fondrie, W. E., Bohaczuk, S. C., Mao, Y., Parmalee, N. L., Mallory, B. J., Harvey, W. T., Kwon, Y., Garcia, G. H., Hoekzema, K., Meyer, J. G., Cicek, M., Eichler, E. E., … Stergachis, A. B. (2024). A haplotype-resolved view of human gene regulation. *bioRxiv*. [https://doi.org/10.1101/2024.06.14.599122](https://doi.org/10.1101/2024.06.14.599122)
 
 ## Summary of Fiber-seq inferred regulatory elements (FIREs)
 

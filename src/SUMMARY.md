@@ -23,9 +23,11 @@
 ---
 
 - [FIRE](fire/fire.md)
-    - [Training](fire/training.md)
-    - [Aggregation and peak calling](fire/aggregation.md)
-    - [Identifying haplotype-selective peaks](fire/haplotype-selective.md)
+    - [Outputs](fire/outputs.md)
+    - [Methods](fire/methods.md)
+        - [Training](fire/training.md)
+        - [Aggregation and peak calling](fire/aggregation.md)
+        - [Identifying haplotype-selective peaks](fire/haplotype-selective.md)
 
 ---
 

@@ -3,7 +3,7 @@ The FIRE pipeline returns outputs for a sample in the directory `results/{sample
 
 | Output | Description |
 | --- | --- |
-| {sample}.cram | CRAM file containing the all the data used in the FIRE pipeline. |
+| {sample}-no-seq-qual-fire.cram | CRAM file containing the all the data used in the FIRE pipeline. |
 | {sample}-fire-peaks.bed.gz | BED file containing the FIRE peaks calls |
 | {sample}-hap-differences.bed.gz | BED file containing the results of searching for haplotype-selective peaks. |
 | {sample}-fire-pileup.bed.gz | BED file containing per-base information on number of FIREs, MSPs, nucleosomes, coverage and more. |
@@ -13,8 +13,8 @@ The FIRE pipeline returns outputs for a sample in the directory `results/{sample
 | additional-outputs/ | Directory containing additional outputs from the FIRE pipeline. |
 
 # More details on the individual outputs
-## The `{sample}.cram` file
-The CRAM file contains all the data used in the FIRE pipeline. It is a CRAM file that can be viewed with IGV or other genome browsers. 
+## The `{sample}-no-seq-qual-fire.cram` file
+The CRAM file contains all the data used in the FIRE pipeline. It is a CRAM file that can be viewed with IGV or other genome browsers. Sequencing quality scores are removed from the CRAM file to reduce the file size since per base quality scores are not used in the FIRE pipeline. 
 
 ## The `{sample}-fire-peaks.bed.gz` file
 This is the peak file for the FIRE method. Peaks are called by identifying FIRE score ([methods](methods/aggregation.md)) local-maxima that have FDR values below a threshold. By default, the pipeline reports peaks at a 5% FDR threshold. Once a local-maxima is identified, the start and end positions of the peak are determined by the median start and end positions of the underlying FIRE elements. We also calculate and report wide peaks in the `additional-outputs/` by taking the union of the FIRE peaks and all regions below the FDR threshold and then merging resulting regions that are within one nucleosome (147 bp) of one another.
@@ -59,3 +59,4 @@ The `trackHub/` directory contains a UCSC trackHub for visualizing all the resul
 
 ## The `additional-outputs/` directory
 The `additional-outputs/` directory contains the following files:
+TODO

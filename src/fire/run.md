@@ -16,7 +16,7 @@ Finally, if you wish to distribute jobs across a cluster you will need to instal
 pip install snakemake-executor-plugin-slurm
 ```
 
-We recommend adding a snakemake conda prefix to your `bashrc`, e.g. in the Stergachis lab add:
+We recommend setting a snakemake conda prefix and the apptainer cache directory in your `bashrc`, e.g. in the Stergachis lab add:
 ```bash
 export SNAKEMAKE_CONDA_PREFIX=/mmfs1/gscratch/stergachislab/snakemake-conda-envs
 export APPTAINER_CACHEDIR=/mmfs1/gscratch/stergachislab/snakemake-conda-envs/apptainer-cache

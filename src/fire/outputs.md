@@ -57,6 +57,8 @@ This file contains quality control metrics for the FIRE CRAM. The results are di
 ## The `trackHub/` directory
 The `trackHub/` directory contains a UCSC trackHub for visualizing all the results of the FIRE pipeline. A description of the trackHub can be found in `trackHub/fire-description.html`. The trackHub can be loaded into UCSC by uploading the trackHub directory to a public facing website and then loading the `hub.txt`'s URL into the UCSC trackHub browser.
 
+A copy of the trackHub description can be found [here](https://s3-us-west-2.amazonaws.com/stergachis-public1/Mitchell/temp/FIRE/dev/trackHub/fire-description.html).
+
 ## The `additional-outputs/` directory
 The `additional-outputs/` directory contains the following files:
 TODO

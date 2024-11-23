@@ -59,6 +59,14 @@ If you want to execute across a cluster (modify `profiles/slurm-executor` as nee
 pixi run fire --configfile config/config.yaml --profile profiles/slurm-executor
 ```
 
+And if you want to run the FIRE workflow from another directory you can do so with:
+
+```bash
+pixi run --manifest-path /path/to/snakemake/pixi.toml fire ...
+```
+
+where you update `/path/to/snakemake/pixi.toml` to the path of the `pixi.toml` in the cloned FIRE repository.
+
 You can also run snakemake directly, e.g.:
 
 ```bash

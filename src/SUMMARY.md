@@ -16,6 +16,8 @@
         - [`ft extract`](fibertools/extracting/extract.md)
         - [`ft center`](fibertools/extracting/center.md)
         - [`ft footprint`](fibertools/extracting/footprint.md)
+        - [`ft pileup`](fibertools/extracting/pileup.md)
+        - [`ft qc`](fibertools/extracting/qc.md)
     - [Help pages for `ft` subcommands](fibertools/help.md)
     - [pyft: Python bindings](fibertools/pyft.md)
     - [Installation](fibertools/install.md)
@@ -23,9 +25,12 @@
 ---
 
 - [FIRE](fire/fire.md)
-    - [Training](fire/training.md)
-    - [Aggregation and peak calling](fire/aggregation.md)
-    - [Identifying haplotype-selective peaks](fire/haplotype-selective.md)
+    - [Running and installing](fire/run.md)
+    - [Outputs](fire/outputs.md)
+    - [Methods](fire/methods/methods.md)
+        - [Training](fire/methods/training.md)
+        - [Aggregation and peak calling](fire/methods/aggregation.md)
+        - [Identifying haplotype-selective peaks](fire/methods/haplotype-selective.md)
 
 ---
 

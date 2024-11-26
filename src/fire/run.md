@@ -19,13 +19,6 @@ We then recommend quickly testing your installation by running the test suite:
 pixi run test
 ```
 
-If you wish to distribute jobs across a cluster you will need to install the appropriate [snakemake executor plugin](https://snakemake.github.io/snakemake-plugin-catalog/). For example, to use SLURM you can install the `snakemake-executor-slurm` plugin using pip:
-
-```
-pixi shell
-pip install snakemake-executor-plugin-slurm
-```
-
 We recommend setting a Snakemake conda prefix and the Apptainer cache directory in your `bashrc`, e.g. in the Stergachis lab add:
 
 ```bash
@@ -34,6 +27,8 @@ export APPTAINER_CACHEDIR=/mmfs1/gscratch/stergachislab/snakemake-conda-envs/app
 ```
 
 Then Snakemake installs all the additional requirements as conda envs in that directory.
+
+If you wish to distribute jobs across a cluster you may need to install the appropriate [snakemake executor plugin](https://snakemake.github.io/snakemake-plugin-catalog/). The SLURM executor is included in the environment (`snakemake-executor-slurm`)
 
 ## Configuring
 

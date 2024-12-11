@@ -10,11 +10,8 @@ The following tags are added to the BAM file:
 - `al:B:I,`: Equal length array to `as` of MSP lengths (u32).
 - `aq:B:C,`: Quality scores for the MSP [0, 255] (u8). This tag is optional and added by `ft fire`.
 
-The `ns` or `as` tag do not need to begin or end at the start or end of the read; however, once begun, they must be contiguous. i.e. the `ns` and `as` tags must combine to form a contiguous set of alternating nucleosome and MSP sites. The `ns`, `nl`, `as`, and `al` tags are added to the BAM file automatically using `ft predict-m6a` or later using the `ft add-nucleosomes` command. 
+**The `ns`/`as`/`nl`/`al` tags are with respect to the unaligned sequencing read (forward strand) and are not affected by alignment or the orientation of the read after alignment. This also means that the starts and lengths encoded in these tags may change when `ft` lifts these molecular coordinates to reference coordinates.**
+
+The `ns` or `as` tag do not need to begin or end at the start or end of the read; however, once begun, they must be contiguous. i.e. the `ns` and `as` tags must combine to form a contiguous set of alternating nucleosome and MSP sites. The `ns`, `nl`, `as`, and `al` tags are added to the BAM file automatically using `ft predict-m6a` or later using the `ft add-nucleosomes` command.
 
 The `aq` tag is added using the `ft fire` command and represents the estimated precision of the MSP being a [FIRE](glossary.md#fire). Specifically, the estimated precision of a FIRE is the value of the `aq` tag divided by 255.
-
-
-
-
-

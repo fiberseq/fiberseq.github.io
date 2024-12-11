@@ -10,6 +10,7 @@ Then install FIRE using `git` and `pixi`:
 
 ```bash
 git clone https://github.com/fiberseq/FIRE.git
+cd FIRE
 pixi install
 ```
 

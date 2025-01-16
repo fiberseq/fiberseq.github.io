@@ -6,9 +6,9 @@ It is usually unnecessary to run this command manually, as it is called by `ft p
 
 [**The help page**](../help.md#ft-add-nucleosomes)
 
-## Methods
+## Method
 
-Nucleosome calling is performed by identifying stretches of DNA that are protected from Hia5 and therefore do not have m6A signal. We have found the false positives in nucleosomes are very low when using `fibertools` (Jha et al.) allowing for a heuristic to perform as well as or better than our previous HMM caller (Dubocanin et al.).
+Nucleosome calling is performed by identifying stretches of DNA that are protected from Hia5 (i.e. do not have m6A signal). We have found the rate of false positive m6A calls in nucleosomes is very low when using `fibertools` (Jha et al.) allowing for a heuristic to perform as well as or better than our previous HMM caller (Dubocanin et al.).
 
 There are three parameters in our heuristic nucleosome calling that can be adjusted: the minimum nucleosome length (`n`, default 75), the minimum combined nucleosome length (`c`, default 100), and the minimum extension to nucleosome length (`e`, default 25). These three parameters impact the three phases in nucleosome calling.
 

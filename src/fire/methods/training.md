@@ -6,7 +6,7 @@ For training data, we generated 21 different GM12878 Fiber-seq experiments with 
 
 ### Semi-supervised training
 
-To carry out semi-supervised training, we used an established method, Mokapot (Fondrie & Noble, 2021; Käll et al., 2007), which we summarize below. In the first round of semi-supervised training, Mokapot identifies the feature that best discriminates between our mixed-positive and negative labels and then selects a threshold for that feature such that the mixed-positive labels can be discriminated from the negative labels with 95% estimated precision (defined below). The subset of mixed-positive labels above this threshold is then used as an initial set of positive labels in training an XGBoost model with five-fold cross-validation (Chen & Guestrin, 2016). Then this process is iteratively repeated, using the learned prediction from the previous iteration’s model to create positive labels at 95% estimated precision, until the number of positive identifications at 95% precision in the validation set ceases to increase (15 iterations, Fig. S1) (Fondrie & Noble, 2021; Käll et al., 2007). 
+To carry out semi-supervised training, we used an established method, Mokapot (Fondrie & Noble, 2021; Käll et al., 2007), which we summarize below. In the first round of semi-supervised training, Mokapot identifies the feature that best discriminates between our mixed-positive and negative labels and then selects a threshold for that feature such that the mixed-positive labels can be discriminated from the negative labels with 95% estimated precision (defined below). The subset of mixed-positive labels above this threshold is then used as an initial set of positive labels in training an XGBoost model with five-fold cross-validation (Chen & Guestrin, 2016). Then this process is iteratively repeated, using the learned prediction from the previous iteration’s model to create positive labels at 95% estimated precision, until the number of positive identifications at 95% precision in the validation set ceases to increase (15 iterations, Fig. S1) (Fondrie & Noble, 2021; Käll et al., 2007).
 
 ### Estimated precision of individual FIRE elements
 
@@ -20,23 +20,25 @@ where TMP is the number of “true” identifications from the mixed positive la
 
 The following features were used as features with `Mokapot` in FIRE element classification:
 
-| Feature | Description |
-| ------- | ----------- |
-| msp_len | Length of the MSP |
-| msp_len_times_m6a_fc | Length of the MSP times the fold-change of m6A in the MSP |
-| ccs_passes | Number of CCS passes in the MSP |
-| fiber_m6a_count | Number of m6A sites in the Fiber-seq read |
-| fiber_AT_count | Number of AT sites in the Fiber-seq read |
-| fiber_m6a_frac | Fraction of m6A sites in the Fiber-seq read |
-| msp_m6a | Number of m6A sites in the MSP |
-| msp_AT | Number of AT sites in the MSP |
-| msp_m6a_frac | Fraction of m6A sites in the MSP |
-| msp_fc | Fold-change of m6A fraction in the MSP relative to the whole reads m6A fraction |
-| m6a_count_X | Number of m6A sites in the Xth 40 bp window |
-| AT_count_X | Number of AT sites in the Xth 40 bp window |
-| m6a_frac_X | Fraction of m6A sites in the Xth 40 bp window |
-| m6a_fc_X | Fold-change of m6A fraction in the Xth 40 bp window relative to the whole reads m6A fraction |
+| Feature                    | Description                                                                                                                               |
+| -------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+| msp_len                    | Length of the MSP                                                                                                                         |
+| msp_len_times_m6a_fc       | Length of the MSP times the fold-change of m6A in the MSP                                                                                 |
+| ccs_passes                 | Number of CCS passes in the MSP                                                                                                           |
+| fiber_m6a_count            | Number of m6A sites in the Fiber-seq read                                                                                                 |
+| fiber_AT_count             | Number of AT sites in the Fiber-seq read                                                                                                  |
+| fiber_m6a_frac             | Fraction of m6A sites in the Fiber-seq read                                                                                               |
+| msp_m6a                    | Number of m6A sites in the MSP                                                                                                            |
+| msp_AT                     | Number of AT sites in the MSP                                                                                                             |
+| msp_m6a_frac               | Fraction of m6A sites in the MSP                                                                                                          |
+| msp_fc                     | Fold-change of m6A fraction in the MSP relative to the whole reads m6A fraction                                                           |
+| bin_X_m6a_count            | Number of m6A sites in the Xth 40 bp window                                                                                               |
+| bin_X_AT_count             | Number of AT sites in the Xth 40 bp window                                                                                                |
+| bin_X_m6a_frac             | Fraction of m6A sites in the Xth 40 bp window                                                                                             |
+| bin_X_m6a_fc               | Fold-change of m6A fraction in the Xth 40 bp window relative to the whole reads m6A fraction                                              |
+| {best, worst}\_m6a_count_X | Number of m6A sites in the 100 bp window with the most (best) or least (worst) m6A sites                                                  |
+| {best, worst}\_AT_count_X  | Number of AT sites in the 100 bp window with the most (best) or least (worst) AT sites                                                    |
+| {best, worst}\_m6a_frac_X  | Fraction of m6A sites in the 100 bp window with the most (best) or least (worst) m6A sites                                                |
+| {best, worst}\_m6a_fc_X    | Fold-change of m6A fraction in the 100 bp window with the most (best) or least (worst) m6A sites relative to the whole reads m6A fraction |
 
-There are nine 40 bp windows for each MSP (X = 1, 2, ..., 9), with the 5th window centered on the MSP. 
-
-
+There are nine 40 bp windows for each MSP (X = 1, 2, ..., 9), with the 5th window centered on the MSP.

@@ -20,11 +20,10 @@ We then recommend quickly testing your installation by running the test suite:
 pixi run test
 ```
 
-We recommend setting a Snakemake conda prefix and the Apptainer cache directory in your `bashrc`, e.g. in the Stergachis lab add:
+We recommend setting a Snakemake conda prefix in your `bashrc`, e.g. in the Stergachis lab add:
 
 ```bash
 export SNAKEMAKE_CONDA_PREFIX=/mmfs1/gscratch/stergachislab/snakemake-conda-envs
-export APPTAINER_CACHEDIR=/mmfs1/gscratch/stergachislab/snakemake-conda-envs/apptainer-cache
 ```
 
 Then Snakemake installs all the additional requirements as conda envs in that directory.

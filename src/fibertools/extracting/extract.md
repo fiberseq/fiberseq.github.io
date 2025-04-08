@@ -20,6 +20,7 @@ For example, `ft extract input.bam --m6a m6a.bed.gz` will output a compressed be
 | en     | End position of the read on the chromosome      |
 | fiber  | The fiber/read name                             |
 | score  | The number of ccs passes for the read (rounded) |
+| strand | The strand of the read                          |
 
 ### Columns specific to the `--m6a`, `--cpg`, `--nuc`, and `--msp` outputs
 

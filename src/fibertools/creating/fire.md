@@ -10,11 +10,15 @@ This command can be run in isolation; however, it is usually preferable to run t
 
 If you only need FIRE elements in the BAM file and don't need the peak-calls or trackHubs that are part of the FIRE pipeline you can do a simplified run FIRE using only `ft`. e.g.:
 
-````bash
+```bash
 # add FIREs to the BAM file
 ft fire input.bam fire.bam
 # Extract the FIREs from the BAM file into bed format
 ft fire --extract fire.bam fire.bed.gz
 # if you want the NUC calls and non-FIRE MSPs as well
-ft fire --extract --all fire.bam all.bed.gz```
-````
+ft fire --extract --all fire.bam all.bed.gz
+```
+
+```
+
+```

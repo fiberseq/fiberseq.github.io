@@ -45,6 +45,7 @@ See the [configuration README](https://github.com/fiberseq/FIRE/tree/main/config
 ---
 
 **⚠️ ONT users**
+
 If you are using ONT please follow the preprocessing steps outlined [here](../quick-start.md#fiber-seq-starting-with-oxford-nanopore-technologies-ont), and then be sure to **include `ont: true` in your config file (e.g. `config.yaml`)**. This will ensure that the correct parameters are used for the `ft fire` command.
 
 ---

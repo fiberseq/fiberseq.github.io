@@ -2,6 +2,8 @@
 
 The FIRE pipeline is a Snakemake workflow for calling Fiber-seq Inferred Regulatory Elements (FIREs) on single molecules and peak calling with Fiber-seq.
 
+This pipeline generates peak-calls and trackHubs for a **whole genome** Fiber-seq dataset. If instead you are interested only in adding FIRE elements to you BAM file refer to [ft fire](../fibertools/creating/fire.md#i-just-need-the-fire-elements)
+
 ## Install
 
 Please start by installing [pixi](https://pixi.sh/latest/) which handles the environment of the FIRE workflow.

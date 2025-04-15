@@ -18,7 +18,3 @@ ft fire --extract fire.bam fire.bed.gz
 # if you want the NUC calls and non-FIRE MSPs as well
 ft fire --extract --all fire.bam all.bed.gz
 ```
-
-```
-
-```

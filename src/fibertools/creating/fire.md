@@ -8,7 +8,7 @@ This command can be run in isolation; however, it is usually preferable to run t
 
 ## I just need the FIRE elements
 
-If you only need FIRE elements in the BAM file and don't need the peak-calls or trackHubs that are part of the fire pipeline you can do a simplified run FIRE using only `ft`. e.g.:
+If you only need FIRE elements in the BAM file and don't need the peak-calls or trackHubs that are part of the FIRE pipeline you can do a simplified run FIRE using only `ft`. e.g.:
 
 ````bash
 # add FIREs to the BAM file

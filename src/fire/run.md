@@ -40,7 +40,14 @@ If you wish to distribute jobs across a cluster you may need to install the appr
 
 ## Configuring
 
-See the [configuration README](https://github.com/fiberseq/FIRE/tree/main/config), the example [configuration file](https://github.com/fiberseq/FIRE/blob/main/config/config.yaml), and the example [manifest file](https://github.com/fiberseq/FIRE/blob/main/config/config.tbl) for configuration options.
+## See the [configuration README](https://github.com/fiberseq/FIRE/tree/main/config), the example [configuration file](https://github.com/fiberseq/FIRE/blob/main/config/config.yaml), and the example [manifest file](https://github.com/fiberseq/FIRE/blob/main/config/config.tbl) for configuration options.
+
+---
+
+**⚠️ ONT users**
+If you are using ONT please follow the preprocessing steps outlined [here](../quick-start.md#fiber-seq-starting-with-oxford-nanopore-technologies-ont), and then be sure to **include `ont: true` in your config file (e.g. `config.yaml`)**. This will ensure that the correct parameters are used for the `ft fire` command.
+
+---
 
 ## Run
 

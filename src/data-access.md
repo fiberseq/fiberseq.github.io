@@ -9,7 +9,7 @@ We provide access to broadly consented Fiber-seq data that can be used by resear
 Our broadly consented datasets include the following samples:
 
 - **CHM1**: Complete hydatidiform mole cell line
-- **CHM13**: Complete hydatidiform mole cell line (GRCh38, alignment)
+- **CHM13**: Complete hydatidiform mole cell line (GRCh38 alignment)
 - **CHM13_DSA**: CHM13 data aligned against the DSA (T2Tv2.0)
 - **GM12878**: Lymphoblastoid cell line from Coriell Cell Repository
 - **HG002**: Human genome reference sample (Ashkenazi Jewish trio son)

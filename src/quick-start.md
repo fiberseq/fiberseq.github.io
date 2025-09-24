@@ -63,7 +63,7 @@ ft add-nucleosomes  filtered.dorado.bam output.bam
 Here is an example summary of the commands to process ONT data assuming you have already completed 6mA and CpG calling with `dorado`:
 
 ```bash
-`#converts to fastq for keeping all the BAM tags` \
+`#converts to fastq keeping all the BAM tags` \
 samtools fastq -@ 8 -T "*" ONT.dorado.with.6mA.bam \
     `#aligns the data inserting the tags back into the output BAM`
     | minimap2 -t 32 --secondary=no -I 8G --eqx --MD -Y -y -ax map-ont reference.fasta - \

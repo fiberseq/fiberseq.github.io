@@ -71,8 +71,7 @@ modkit call-mods -p 0.1 ONT.dorado.with.6mA.bam - \
     | bgzip -@ 8 \
     > ont.fiberseq.fastq.gz
 
- minimap2 \
-        -t 32 --secondary=no -I 8G --eqx --MD -Y -y -ax map-ont \
+ minimap2 -t 32 --secondary=no -I 8G --eqx --MD -Y -y -ax map-ont \
         reference.fasta ont.fiberseq.fastq.gz \
    | samtools sort -@ 32 --write-index -o ont.fiberseq.bam
 ```

@@ -67,6 +67,8 @@ Here is an example summary of the commands to process ONT data assuming you have
 samtools fastq -@ 8 -T "*" ONT.dorado.with.6mA.bam \
     `#aligns the data inserting the tags back into the output BAM`
     | minimap2 -t 32 --secondary=no -I 8G --eqx --MD -Y -y -ax map-ont reference.fasta - \
+    `#optionally add back in the read groups from the original bam using rustybam` \
+    | rb add-rg -u ONT.dorado.with.6mA.bam \
     `#sort and index the BAM` \
     | samtools sort -@ 32 --write-index -o tmp.ONT.fiberseq.bam
 

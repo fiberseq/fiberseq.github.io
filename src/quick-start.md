@@ -50,14 +50,12 @@ If you do use Dorado you must then filter the m6A calls with [modkit](https://gi
 modkit call-mods -t 8 -p 0.1 input.dorado.bam filtered.dorado.bam
 ```
 
-We also show how to apply this filter and call nucleosomes in one line in the next section.
-
 ### Infer nucleosomes and MSPs
 
-Once you have CpG and m6A information in your filtered ONT BAM file, you can use [`ft add-nucleosomes`](fibertools/help.md#ft-add-nucleosomes) to infer nucleosomes and MSPs. With Dorado, we find the best results when restricting to the 90% of calls that `dorado` is most confident in as determined by [modkit](https://github.com/nanoporetech/modkit).
+Once you have CpG and m6A information in your filtered ONT BAM file, you can use [`ft add-nucleosomes`](fibertools/help.md#ft-add-nucleosomes) to infer nucleosomes and MSPs.
 
 ```bash
-modkit call-mods -p 0.1 input.bam - | ft add-nucleosomes - output.bam
+ft add-nucleosomes  filtered.dorado.bam output.bam
 ```
 
 ### A full example for processing ONT data

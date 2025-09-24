@@ -65,12 +65,16 @@ After this point, you will have a Fiber-seq BAM file that is compatible with all
 Here is an example summary of the commands to process ONT data assuming you have already completed 6mA and CpG calling with `dorado`:
 
 ```bash
-modkit call-mods -p 0.1 ONT.dorado.with.6mA.bam - `#filters the ONT data for the best 6mA calls` \
-    | ft add-nucleosomes `# adds nucleosome calls to the ONT Fiber-seq` \
-    | samtools fastq -@ 8 -T "*" `#converts to fastq for keeping all the BAM tags` \
-    | minimap2 -t 32 --secondary=no -I 8G --eqx --MD -Y -y -ax map-ont \
-        reference.fasta - `#aligns the data inserting the tags back into the output BAM` \
-    | samtools sort -@ 32 --write-index -o ont.fiberseq.bam `# sort and index the final BAM`
+#filters the ONT data for the best 6mA calls and write to stdout
+modkit call-mods -p 0.1 ONT.dorado.with.6mA.bam - \
+    `# adds nucleosome calls to the ONT Fiber-seq` \
+    | ft add-nucleosomes \
+    `#converts to fastq for keeping all the BAM tags` \
+    | samtools fastq -@ 8 -T "*" \
+    `#aligns the data inserting the tags back into the output BAM` \
+    | minimap2 -t 32 --secondary=no -I 8G --eqx --MD -Y -y -ax map-ont reference.fasta - \
+    `# sort and index the final BAM` \
+    | samtools sort -@ 32 --write-index -o ont.fiberseq.bam
 ```
 
 ### Fiber-seq peaks and UCSC browser tracks

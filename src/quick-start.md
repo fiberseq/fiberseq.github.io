@@ -26,7 +26,7 @@ Alternatively, we have written a [snakemake pipeline](https://github.com/mrvollg
 
 After this point, you will have a Fiber-seq BAM file that is compatible with all the [extraction](fibertools/extracting/extracting.md) commands in `fibertools`.
 
-### Fiber-seq peaks and UCSC browser tracks
+### Fiber-seq peaks and UCSC browser tracks (FIRE)
 
 Once you have a phased bam file, you can identify [Fiber-seq inferred regulatory elements (FIREs)](glossary.md#fires) to call Fiber-seq peaks and make a UCSC trackHub. Please see the [FIRE repository](https://github.com/fiberseq/FIRE) for more details.
 
@@ -77,7 +77,7 @@ modkit call-mods -p 0.1 ONT.dorado.with.6mA.bam - \
 
 After this point, you will have a Fiber-seq BAM file that is compatible with all the [extraction](fibertools/extracting/extracting.md) commands in `fibertools`.
 
-### Fiber-seq peaks and UCSC browser tracks
+### Fiber-seq peaks and UCSC browser tracks (FIRE)
 
 We have had good success in applying the [FIRE pipeline](https://github.com/fiberseq/FIRE) to ONT data. However, this does require a heuristic in FIRE that must be enabled. To enable this add `ont: true` to your `config.yaml` file when setting up your FIRE run.
 You can find more details in on installing and running FIRE here:

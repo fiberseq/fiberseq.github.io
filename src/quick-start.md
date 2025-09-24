@@ -36,6 +36,14 @@ Once you have a phased bam file, you can identify [Fiber-seq inferred regulatory
 
 **ft predict-m6a** does not include a model for ONT data; however, you can use software, such as [Dorado](https://github.com/nanoporetech/dorado), to add CpG and m6A to your ONT BAM file.
 
+### Alignment and phasing
+
+You can either use [Dorado](https://github.com/nanoporetech/dorado) to align your ONT data or use a tool like [minimap2](https://github.com/lh3/minimap2) to align your data. If you do use `minimap2` be sure to include the flag `-y` to preserve the CpG and m6A information in the output BAM file.
+
+If you do want to do phasing we recommend using [WhatsHap](https://whatshap.readthedocs.io/en/latest/) for phasing ONT data. Please see their documentation for more information.
+
+### Filtering m6A calls
+
 If you do use Dorado you must then filter the m6A calls with [modkit](https://github.com/nanoporetech/modkit) using a tenth percentile cutoff for each flow-cell independently. This is the only way to get good m6A calls in our experience, and using any hard ML threshold will not hold between flow-cells. Here is an example command:
 
 ```bash
@@ -52,27 +60,22 @@ Once you have CpG and m6A information in your filtered ONT BAM file, you can use
 modkit call-mods -p 0.1 input.bam - | ft add-nucleosomes - output.bam
 ```
 
-### Alignment and phasing
-
-You can either use [Dorado](https://github.com/nanoporetech/dorado) to align your ONT data or use a tool like [minimap2](https://github.com/lh3/minimap2) to align your data. If you do use `minimap2` be sure to include the flag `-y` to preserve the CpG and m6A information in the output BAM file.
-
-If you do want to do phasing we recommend using [WhatsHap](https://whatshap.readthedocs.io/en/latest/) for phasing ONT data. Please see their documentation for more information.
-
 ### A full example for processing ONT data
 
 Here is an example summary of the commands to process ONT data assuming you have already completed 6mA and CpG calling with `dorado`:
 
 ```bash
-#filters the ONT data for the best 6mA calls and write to stdout
-modkit call-mods -p 0.1 ONT.dorado.with.6mA.bam - \
-    `# adds nucleosome calls to the ONT Fiber-seq` \
-    | ft add-nucleosomes \
-    `#converts to fastq for keeping all the BAM tags` \
-    | samtools fastq -@ 8 -T "*" \
-    `#aligns the data inserting the tags back into the output BAM` \
+`#converts to fastq for keeping all the BAM tags` \
+samtools fastq -@ 8 -T "*" ONT.dorado.with.6mA.bam \
+    `#aligns the data inserting the tags back into the output BAM`
     | minimap2 -t 32 --secondary=no -I 8G --eqx --MD -Y -y -ax map-ont reference.fasta - \
-    `# sort and index the final BAM` \
-    | samtools sort -@ 32 --write-index -o ont.fiberseq.bam
+    `#sort and index the BAM` \
+    | samtools sort -@ 32 --write-index -o tmp.ONT.fiberseq.bam
+
+#filters the ONT data for the best 6mA calls and write to stdout
+modkit call-mods -p 0.1 tmp.ONT.fiberseq.bam - \
+    `# adds nucleosome calls to the ONT Fiber-seq` \
+    | ft add-nucleosomes - ONT.fiberseq.bam
 ```
 
 After this point, you will have a Fiber-seq BAM file that is compatible with all the [extraction](fibertools/extracting/extracting.md) commands in `fibertools`.

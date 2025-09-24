@@ -58,8 +58,6 @@ You can either use [Dorado](https://github.com/nanoporetech/dorado) to align you
 
 If you do want to do phasing we recommend using [WhatsHap](https://whatshap.readthedocs.io/en/latest/) for phasing ONT data. Please see their documentation for more information.
 
-After this point, you will have a Fiber-seq BAM file that is compatible with all the [extraction](fibertools/extracting/extracting.md) commands in `fibertools`.
-
 ### A full example for processing ONT data
 
 Here is an example summary of the commands to process ONT data assuming you have already completed 6mA and CpG calling with `dorado`:
@@ -76,6 +74,8 @@ modkit call-mods -p 0.1 ONT.dorado.with.6mA.bam - \
     `# sort and index the final BAM` \
     | samtools sort -@ 32 --write-index -o ont.fiberseq.bam
 ```
+
+After this point, you will have a Fiber-seq BAM file that is compatible with all the [extraction](fibertools/extracting/extracting.md) commands in `fibertools`.
 
 ### Fiber-seq peaks and UCSC browser tracks
 

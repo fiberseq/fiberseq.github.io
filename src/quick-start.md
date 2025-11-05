@@ -7,6 +7,7 @@ The primary tool for handling Fiber-seq data is `fibertools`, and this page prov
 - Create or filter m6A calls
 - Infer nucleosomes and modification sensitive patches (MSPs)
 - Align and phase the data
+- Validate your Fiber-seq BAM file
 - Apply Fiber-seq inferred regulatory element (FIRE) calling to identify peaks and create UCSC browser tracks
 
 # Fiber-seq starting with PacBio

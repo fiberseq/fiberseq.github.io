@@ -7,7 +7,6 @@ FT=../fibertools-rs/target/debug/ft
 
 out="src/fibertools/help.md"
 echo "# Help pages for fibertools subcommands" >$out
-echo "<!-- toc -->" >>$out
 echo "" >>$out
 
 for subcommand in "" "predict-m6a" "fire" "extract" "center" "add-nucleosomes" "footprint" "clear-kinetics" "strip-basemods" "track-decorators" "pileup" "qc"; do

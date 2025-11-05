@@ -9,8 +9,6 @@ The primary tool for handling Fiber-seq data is `fibertools`, and this page prov
 - Validate your Fiber-seq BAM file
 - Apply Fiber-seq inferred regulatory element (FIRE) calling to identify peaks and create UCSC browser tracks
 
-<!-- toc -->
-
 # Fiber-seq starting with PacBio
 
 <div class="warning">

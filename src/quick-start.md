@@ -4,14 +4,15 @@
 
 # Fiber-seq starting with PacBio
 
-HiFi kinetics are required for predicting [m6A](glossary.md#m6a) with `fibertools`. **Check with your sequencing provider prior to sequencing** to ensure that the output file will have kinetics. Additionally, many of `fibertools` commands are compatible with CpG methylation which can be completed on instrument (if requested) or later with [Jasmine](https://github.com/PacificBiosciences/jasmine), e.g. `jasmine --keep-kinetics input.ccs.bam output.ccs.bam`. This command should be run prior to `fibertools` if CpG methylation information is desired as Jasmine will overwrite the m6A predictions in the MM and ML tags.
+For using Fiber-seq data it is important to **check with your sequencing provider prior to sequencing** to ensure that the output file will have the required information for Fiber-seq. The provider must select for the instrument to generate m6A calls using `jasmine` on instrument (if using SPQR chemistry or latter) or for the output to include average kinetics information in the CCS BAM (if using earlier chemistries), without this information `fibertools` will not be able to make m6A calls.
 
 ### Predict m6A and infer nucleosomes
 
 #### Your PacBio data uses the SPQR chemistry or latter
 
-As of the SPQR chemistry with PacBio their base modification caller `jasmine` can make m6A predictions on instrument in addition to 5mC.
-This removes the need for `ft predict` and PacBio BAMs that have the kinetics information. However, after you must still run `ft add-nucleosomes` which is required for downstream analysis.
+As of the SPQR chemistry PacBio's base modification caller `jasmine` can make m6A predictions on instrument in addition to 5mC.
+
+This removes the need for `ft predict` and the need to save the kinetics tags within the PacBio BAM. However, after you must still run `ft add-nucleosomes` which is required for downstream analysis.
 
 ```bash
 ft add-nucleosomes -t 16 input.pacbio.bam output.fiberseq.bam

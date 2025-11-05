@@ -1,14 +1,15 @@
 # The quick start guide for analyzing Fiber-seq data
 
-<!-- toc -->
-
 The primary tool for handling Fiber-seq data is `fibertools`, and this page provides a high level order of operations for turning you raw Fiber-seq data into useful chromatin information. The steps differ slightly depending on if you are starting with PacBio or Oxford Nanopore Technologies (ONT); however, the steps can be summarized as:
 
 - Create or filter m6A calls
 - Infer nucleosomes and modification sensitive patches (MSPs)
+- Apply the Fiber-seq QC tool
 - Align and phase the data
 - Validate your Fiber-seq BAM file
 - Apply Fiber-seq inferred regulatory element (FIRE) calling to identify peaks and create UCSC browser tracks
+
+<!-- toc -->
 
 # Fiber-seq starting with PacBio
 

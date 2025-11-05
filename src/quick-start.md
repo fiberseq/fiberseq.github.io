@@ -127,5 +127,6 @@ After this point, you will have a Fiber-seq BAM file that is compatible with all
 ## Fiber-seq peaks and UCSC browser tracks (FIRE)
 
 We have had good success in applying the [FIRE pipeline](https://github.com/fiberseq/FIRE) to ONT data. However, this does require a heuristic in FIRE that must be enabled. To enable this add `ont: true` to your `config.yaml` file when setting up your FIRE run.
+
 You can find more details in on installing and running FIRE here:
 [Running the FIRE pipeline](/fire/run.md).

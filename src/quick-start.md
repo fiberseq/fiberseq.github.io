@@ -58,10 +58,10 @@ At this point you should have m6A calls, nucleosome calls, and aligned reads (ph
 
 ```bash
 ft validate output.fiberseq.bam
-Total reads tested: 1879
+Total reads tested: 5000
 Fraction with m6A: 100.00%
 Fraction with nucleosomes: 100.00%
-Numer of FIRE calls: 0
+Number of FIRE calls: 0
 Fraction aligned: 100.00%
 Fraction phased: 85.10%
 Fraction with kinetics: 0.00%

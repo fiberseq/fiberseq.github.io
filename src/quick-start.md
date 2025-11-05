@@ -54,7 +54,7 @@ After this point, you will have a Fiber-seq BAM file that is compatible with all
 ### Validate your Fiber-seq BAM file
 
 We have a quick validation tool which can test your BAM file for the desired Fiber-seq features.
-At this point you should have m6A and nucleosome calls.
+At this point you should have m6A calls, nucleosome calls, and aligned reads (phasing is optional).
 
 ```bash
 ft validate output.fiberseq.bam

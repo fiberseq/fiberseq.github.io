@@ -19,7 +19,7 @@ For using Fiber-seq data it is important to **check with your sequencing provide
 
 </div>
 
-### Predict m6A and infer nucleosomes
+## Predict m6A and infer nucleosomes
 
 #### Your PacBio data uses the SPQR chemistry or latter
 
@@ -43,7 +43,7 @@ This will both make m6A calls and identify [nucleosomes](glossary.md#inferred-nu
 
 **Note**, the input **CCS bam must have average kinetics** to be able to call m6A.
 
-### Alignment and phasing
+## Alignment and phasing
 
 We recommend aligning with [pbmm2](https://github.com/PacificBiosciences/pbmm2) and phasing with [HiPhase](https://github.com/PacificBiosciences/hiphase). Please see their respective documentation for more information.
 
@@ -51,7 +51,7 @@ Alternatively, we have written a [snakemake pipeline](https://github.com/mrvollg
 
 After this point, you will have a Fiber-seq BAM file that is compatible with all the [extraction](fibertools/extracting/extracting.md) commands in `fibertools`.
 
-### Validate your Fiber-seq BAM file
+## Validate your Fiber-seq BAM file
 
 We have a quick validation tool which can test your BAM file for the desired Fiber-seq features.
 At this point you should have m6A calls, nucleosome calls, and aligned reads (phasing is optional).
@@ -67,7 +67,7 @@ Fraction phased: 85.10%
 Fraction with kinetics: 0.00%
 ```
 
-### Fiber-seq peaks and UCSC browser tracks (FIRE)
+## Fiber-seq peaks and UCSC browser tracks (FIRE)
 
 Once you have a phased bam file, you can identify [Fiber-seq inferred regulatory elements (FIREs)](glossary.md#fires) to call Fiber-seq peaks and make a UCSC trackHub.
 
@@ -76,17 +76,17 @@ You can find more details in on installing and running FIRE here:
 
 # Fiber-seq starting with Oxford Nanopore Technologies (ONT)
 
-### Predict m6A
+## Predict m6A
 
 **ft predict-m6a** does not include a model for ONT data; however, you can use software, such as [Dorado](https://github.com/nanoporetech/dorado), to add CpG and m6A to your ONT BAM file.
 
-### Alignment and phasing
+## Alignment and phasing
 
 You can either use [Dorado](https://github.com/nanoporetech/dorado) to align your ONT data or use a tool like [minimap2](https://github.com/lh3/minimap2) to align your data. If you do use `minimap2` be sure to include the flag `-y` to preserve the CpG and m6A information in the output BAM file.
 
 If you do want to do phasing we recommend using [WhatsHap](https://whatshap.readthedocs.io/en/latest/) for phasing ONT data. Please see their documentation for more information.
 
-### Filtering m6A calls
+## Filtering m6A calls
 
 If you do use Dorado you must then filter the m6A calls with [modkit](https://github.com/nanoporetech/modkit) using a tenth percentile cutoff for each flow-cell independently. This is the only way to get good m6A calls in our experience, and using any hard ML threshold will not hold between flow-cells. Here is an example command:
 
@@ -94,7 +94,7 @@ If you do use Dorado you must then filter the m6A calls with [modkit](https://gi
 modkit call-mods -t 8 -p 0.1 input.dorado.bam filtered.dorado.bam
 ```
 
-### Infer nucleosomes and MSPs
+## Infer nucleosomes and MSPs
 
 Once you have CpG and m6A information in your filtered ONT BAM file, you can use [`ft add-nucleosomes`](fibertools/help.md#ft-add-nucleosomes) to infer nucleosomes and MSPs.
 
@@ -102,7 +102,7 @@ Once you have CpG and m6A information in your filtered ONT BAM file, you can use
 ft add-nucleosomes  filtered.dorado.bam output.bam
 ```
 
-### A full example for processing ONT data
+## A full example for processing ONT data
 
 Here is an example summary of the commands to process ONT data assuming you have already completed 6mA and CpG calling with `dorado`:
 
@@ -124,7 +124,7 @@ modkit call-mods -p 0.1 tmp.ONT.fiberseq.bam - \
 
 After this point, you will have a Fiber-seq BAM file that is compatible with all the [extraction](fibertools/extracting/extracting.md) commands in `fibertools`.
 
-### Fiber-seq peaks and UCSC browser tracks (FIRE)
+## Fiber-seq peaks and UCSC browser tracks (FIRE)
 
 We have had good success in applying the [FIRE pipeline](https://github.com/fiberseq/FIRE) to ONT data. However, this does require a heuristic in FIRE that must be enabled. To enable this add `ont: true` to your `config.yaml` file when setting up your FIRE run.
 You can find more details in on installing and running FIRE here:

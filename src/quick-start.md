@@ -6,7 +6,19 @@
 
 HiFi kinetics are required for predicting [m6A](glossary.md#m6a) with `fibertools`. **Check with your sequencing provider prior to sequencing** to ensure that the output file will have kinetics. Additionally, many of `fibertools` commands are compatible with CpG methylation which can be completed on instrument (if requested) or later with [Jasmine](https://github.com/PacificBiosciences/jasmine), e.g. `jasmine --keep-kinetics input.ccs.bam output.ccs.bam`. This command should be run prior to `fibertools` if CpG methylation information is desired as Jasmine will overwrite the m6A predictions in the MM and ML tags.
 
+
 ### Predict m6A and infer nucleosomes
+
+#### Your PacBio data uses the SPQR chemistry or latter
+
+As of the SPQR chemistry with PacBio their base modification caller `jasmine` can make m6A predictions on instrument in addition to 5mC.
+This removes the need for `ft predict` and PacBio BAMs that have the kinetics information. However, after you must still run `ft add-nucleosomes` which is required for downstream analysis. 
+
+```bash
+ft add-nucleosomes -t 16 input.pacbio.bam output.fiberseq.bam
+```
+
+#### Your PacBio data predates the SPQR chemistry 
 
 To create useable Fiber-seq data you must first call m6A base-mods on the PacBio CCS bam using `fibertools`. First [install fibertools](fibertools/install.md) and then process your bam file using the prediction command.
 
@@ -26,9 +38,24 @@ Alternatively, we have written a [snakemake pipeline](https://github.com/mrvollg
 
 After this point, you will have a Fiber-seq BAM file that is compatible with all the [extraction](fibertools/extracting/extracting.md) commands in `fibertools`.
 
+### Validate your Fiber-seq BAM file
+
+We have a quick validation tool which can test your BAM file for the desigered Fiber-seq features. At this point you should have m6A and nucleosome calls.
+
+```bash
+ft validate output.fiberseq.bam
+Total reads tested: 1879
+Fraction with m6A: 100.00%
+Fraction with nucleosomes: 100.00%
+Numer of FIRE calls: 0
+Fraction aligned: 100.00%
+Fraction phased: 85.10%
+Fraction with kinetics: 0.00%
+```
+
 ### Fiber-seq peaks and UCSC browser tracks (FIRE)
 
-Once you have a phased bam file, you can identify [Fiber-seq inferred regulatory elements (FIREs)](glossary.md#fires) to call Fiber-seq peaks and make a UCSC trackHub. Please see the [FIRE repository](https://github.com/fiberseq/FIRE) for more details.
+Once you have a phased bam file, you can identify [Fiber-seq inferred regulatory elements (FIREs)](glossary.md#fires) to call Fiber-seq peaks and make a UCSC trackHub. Please see the FIRE page for more details [FIRE](fire/fire.md).
 
 # Fiber-seq starting with Oxford Nanopore Technologies (ONT)
 

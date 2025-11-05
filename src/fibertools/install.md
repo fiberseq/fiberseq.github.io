@@ -14,29 +14,30 @@ mamba install -c conda-forge -c bioconda fibertools-rs
 
 However, due to size constraints in `bioconda` this version does not support contain the pytorch libraries or GPU acceleration for m6A predictions. m6A predictions will still work in the bioconda version but may be much slower. If you would like to use m6A prediction and GPU acceleration, you will need to install using the directions [here](#with-libtorch).
 
-
 # From `crates.io` [![crates.io](https://img.shields.io/crates/v/fibertools-rs)](https://crates.io/crates/fibertools-rs)
 
 Installation from `crates.io` requires the rust package manager `cargo`. You can find [how to install `cargo` here.](https://doc.rust-lang.org/cargo/getting-started/installation.html). Furthermore, a recent version of `gcc` and `cmake` is required. I have tested and recommend `gcc v10.2.0` and `cmake v3.21.1`, though other versions may work.
 
-```
+```bash
 cargo install fibertools-rs
 ```
 
 # From GitHub (active development)
+
 Using cargo from source:
-```
+
+```bash
 cargo install --git https://github.com/fiberseq/fibertools-rs
 ```
+
 or using git form source:
+
 ```bash
 git clone https://github.com/fiberseq/fibertools-rs
 cd fibertools-rs
 cargo build --release
 ./target/release/ft --help
 ```
-
-
 
 # With libtorch
 
@@ -58,6 +59,7 @@ export DYLD_LIBRARY_PATH=${LIBTORCH}/lib:$LD_LIBRARY_PATH
 ```
 
 Finally install using `cargo`:
+
 ```bash
 cargo install --all-features fibertools-rs
 ```

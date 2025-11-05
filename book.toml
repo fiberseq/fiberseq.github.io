@@ -1,7 +1,6 @@
 [book]
 authors = ["Mitchell Robert Vollger"]
 language = "en"
-multilingual = false
 src = "src"
 title = "The computational guide to Fiber-seq"
 

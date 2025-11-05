@@ -2,11 +2,13 @@
 
 <!-- toc -->
 
+The primary tool for handling Fiber-seq data is `fibertools`, and this page provides a high level order of operations for turning you raw Fiber-seq data into useful chromatin information.
+
 # Fiber-seq starting with PacBio
 
 <div class="warning">
 
-For using Fiber-seq data it is important to **check with your sequencing provider prior to sequencing** to ensure that the output file will have the required information for Fiber-seq. The provider must select for the instrument to generate m6A calls using `jasmine` on instrument (if using SPQR chemistry or latter) or for the output to include average kinetics information in the CCS BAM (if using earlier chemistries), without this information `fibertools` will not be able to make m6A calls.
+For using Fiber-seq data it is important to **check with your sequencing provider prior to sequencing** to ensure that the output file will have the required information for Fiber-seq. The provider must select for the instrument to generate m6A calls using `jasmine` on instrument (if using SPQR chemistry or latter) or for the output to include average kinetics information in the CCS BAM (if using earlier chemistries), without this information you will not be able to use your Fiber-seq data.
 
 </div>
 

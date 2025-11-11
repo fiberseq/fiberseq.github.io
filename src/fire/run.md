@@ -38,9 +38,11 @@ Then Snakemake installs all the additional requirements as conda envs in that di
 
 If you wish to distribute jobs across a cluster you may need to install the appropriate [snakemake executor plugin](https://snakemake.github.io/snakemake-plugin-catalog/). The SLURM executor is included in the environment (`snakemake-executor-slurm`)
 
-## Configuring
+## Configuring and inputs
 
-See the [configuration README](https://github.com/fiberseq/FIRE/tree/main/config), the example [configuration file](https://github.com/fiberseq/FIRE/blob/main/config/config.yaml), and the example [manifest file](https://github.com/fiberseq/FIRE/blob/main/config/config.tbl) for configuration options.
+There are two main inputs for the FIRE workflow, a configuration file (e.g. `config.yaml`) and a manifest file (e.g. `manifest.tbl`). The configuration file contains parameters for running the workflow, a reference genome, as well as a path to the manifest file. The manifest file has two columns, the sample name (used to prefix the output files) and the path to the indexed Fiber-seq BAM (or CRAM) file for each sample.
+
+For more details see the [configuration README](https://github.com/fiberseq/FIRE/tree/main/config), the example [configuration file](https://github.com/fiberseq/FIRE/blob/main/config/config.yaml), and the example [manifest file](https://github.com/fiberseq/FIRE/blob/main/config/config.tbl) for configuration options.
 
 ---
 

@@ -53,3 +53,13 @@ aws s3 sync --no-sign-request --endpoint-url https://s3.kopah.uw.edu s3://sterga
 When using our broadly consented data, please:
 
 - Cite the original studies and data contributors
+
+### HPRCv2 Fiber-seq CRAMs
+
+We also provide access to Fiber-seq CRAM for the HPRCv2 release. These CRAMs contain m6A calls, MSP calls, and nucleosome calls for each of the HPRCv2 samples with Fiber-seq data.
+
+You can find these CRAMs in the following S3 bucket. Data is aligned both to the Donor Specific Assembly (`dsa`) and to GRCh38 (`shared.ref`).
+
+```bash
+aws s3 ls --no-sign-request --endpoint-url https://s3.kopah.uw.edu 's3://stergachis/public/HPRCv2/FIRE-bams/'
+```

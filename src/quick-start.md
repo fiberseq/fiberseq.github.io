@@ -16,9 +16,12 @@ The primary tool for handling Fiber-seq data is `fibertools`, and this page prov
 When using Fiber-seq data, it is important to **check with your sequencing provider prior to sequencing** to ensure that the
 output files contain the information required for Fiber-seq analysis.
 
-Since 2025, Revio and Vega instruments automatically generate m6A calls on instrument using `jasmine`. Older
-instruments (Sequel II) require the CCS BAM output to include average kinetics information, which can be used to
-generate m6A calls off instrument. Without this information, Fiber-seq data cannot be analyzed.
+Since 2025, Revio and Vega instruments automatically generate m6A calls on instrument using `jasmine`. For Revio,
+automatic m6A calling was introduced with the SPRQ chemistry update; Revio runs since SPRQ include m6A calls.
+
+Older Revio runs or runs from older instruments (Sequel II) require the CCS BAM output to include **average kinetics
+information**, which can be used to generate m6A calls off instrument. Without this information, Fiber-seq data cannot be
+analyzed.
 
 </div>
 
@@ -39,6 +42,8 @@ ft add-nucleosomes -t 16 input.pacbio.bam output.fiberseq.bam
 
 #### Your PacBio data does not have 6mA tags
 
+**Note:**, the input **CCS bam must have average kinetics** to be able to call m6A.
+
 To create useable Fiber-seq data you must first call m6A base-mods on the PacBio CCS bam using `fibertools`. First [install fibertools](fibertools/install.md) and then process your bam file using the prediction command.
 
 ```bash
@@ -46,8 +51,6 @@ ft predict-m6a -t 16 input.ccs.bam output.fiberseq.bam
 ```
 
 This will both make m6A calls and identify [nucleosomes](glossary.md#inferred-nucleosome) on each [fiber](glossary.md#fiber-seq-read-or-fiber).
-
-**Note**, the input **CCS bam must have average kinetics** to be able to call m6A.
 
 ## Alignment and phasing
 

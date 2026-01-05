@@ -13,23 +13,36 @@ The primary tool for handling Fiber-seq data is `fibertools`, and this page prov
 
 <div class="warning">
 
-For using Fiber-seq data it is important to **check with your sequencing provider prior to sequencing** to ensure that the output file will have the required information for Fiber-seq. The provider must select for the instrument to generate m6A calls using `jasmine` on instrument (if using SPQR chemistry or latter) or for the output to include average kinetics information in the CCS BAM (if using earlier chemistries), without this information you will not be able to use your Fiber-seq data.
+When using Fiber-seq data, it is important to **check with your sequencing provider prior to sequencing** to ensure that the
+output files contain the information required for Fiber-seq analysis.
+
+Since 2025, Revio and Vega instruments automatically generate m6A calls on instrument using `jasmine`. For Revio,
+automatic m6A calling was introduced with the SPRQ chemistry update; Revio runs since SPRQ include m6A calls.
+
+Older Revio runs or runs from older instruments (Sequel II) require the CCS BAM output to include **average kinetics
+information**, which can be used to generate m6A calls off instrument. Without this information, Fiber-seq data cannot be
+analyzed.
 
 </div>
 
 ## Predict m6A and infer nucleosomes
 
-#### Your PacBio data uses the SPQR chemistry or latter
+#### Your PacBio data contains 6mA tags
 
-As of the SPQR chemistry PacBio's base modification caller `jasmine` can make m6A predictions on instrument in addition to 5mC.
+As of 2025, PacBio's base modification caller `jasmine` automatically generates m6A predictions on instrument, in addition
+to 5mC. You can check for the presence of these calls by inspecting the tags in your BAM file. m6A calls are encoded in
+the `MM` tag and will appear with the prefix `MM:Z:A+a`, followed by positional information for the modified bases.
 
-This removes the need for `ft predict` and the need to save the kinetics tags within the PacBio BAM. However, after you must still run `ft add-nucleosomes` which is required for downstream analysis.
+This removes the need to run `ft predict` and eliminates the requirement to retain polymerase kinetics tags in the PacBio
+BAM file. However, you must still run `ft add-nucleosomes`, which is required for downstream Fiber-seq analysis.
 
 ```bash
 ft add-nucleosomes -t 16 input.pacbio.bam output.fiberseq.bam
 ```
 
-#### Your PacBio data predates the SPQR chemistry
+#### Your PacBio data does not have 6mA tags
+
+**Note:**, the input **CCS bam must have average kinetics** to be able to call m6A.
 
 To create useable Fiber-seq data you must first call m6A base-mods on the PacBio CCS bam using `fibertools`. First [install fibertools](fibertools/install.md) and then process your bam file using the prediction command.
 
@@ -38,8 +51,6 @@ ft predict-m6a -t 16 input.ccs.bam output.fiberseq.bam
 ```
 
 This will both make m6A calls and identify [nucleosomes](glossary.md#inferred-nucleosome) on each [fiber](glossary.md#fiber-seq-read-or-fiber).
-
-**Note**, the input **CCS bam must have average kinetics** to be able to call m6A.
 
 ## Alignment and phasing
 

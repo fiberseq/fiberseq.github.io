@@ -24,6 +24,13 @@
 
 ---
 
+- [FiberHMM](fiberhmm/fiberhmm.md)
+    - [Installation and usage](fiberhmm/usage.md)
+    - [Pre-trained models](fiberhmm/models.md)
+    - [How it works](fiberhmm/methods.md)
+
+---
+
 - [FIRE](fire/fire.md)
     - [Running and installing](fire/run.md)
     - [Outputs](fire/outputs.md)

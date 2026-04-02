@@ -15,3 +15,7 @@ The following tags are added to the BAM file:
 The `ns` or `as` tag do not need to begin or end at the start or end of the read; however, once begun, they must be contiguous. i.e. the `ns` and `as` tags must combine to form a contiguous set of alternating nucleosome and MSP sites. The `ns`, `nl`, `as`, and `al` tags are added to the BAM file automatically using `ft predict-m6a` or later using the `ft add-nucleosomes` command.
 
 The `aq` tag is added using the `ft fire` command and represents the estimated precision of the MSP being a [FIRE](glossary.md#fire). Specifically, the estimated precision of a FIRE is the value of the `aq` tag divided by 255.
+
+## Molecular Annotation Specification
+
+A more comprehensive specification for molecular annotations in Fiber-seq data is being developed at [fiberseq/Molecular-annotation-spec](https://github.com/fiberseq/Molecular-annotation-spec). This specification will formalize the full set of per-molecule annotations beyond the BAM tags described above.

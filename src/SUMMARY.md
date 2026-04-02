@@ -3,7 +3,11 @@
 
 ---
 
-[Quick start guide](quick-start.md)
+[Bench Protocol](protocol/bench-protocol.md)
+
+---
+
+[Computational quick start guide](quick-start.md)
 
 ---
 

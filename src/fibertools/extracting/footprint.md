@@ -44,7 +44,7 @@ The footprinting output table is a tab-separated file with the same number of en
 | fiber_names | Comma separated list of fiber names that span the motif. Names share the same index as the previous column, so they can be matched with footprint codes. |
 
 ## Footprint codes
-The footprint codes are an encoded bit flag similar to how filtering is done with `samtools`. If the first bit is set (1) then there is an MSP that spans the footprint. For each following bit, the bit is set if that module is footprinted by that fiber.
+The footprint codes are an encoded bit flag similar to how filtering is done with `samtools`. If the first bit is set (1) then all modules within the motif are fully overlapped by an MSP on that fiber. For each following bit, the bit is set if that module does not contain m6A events, presumably due to transcription factor or nucleosome binding across the module on that fiber.
 
 Here are some examples in python for how you could test a footprint code in a few ways:
 ```python

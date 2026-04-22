@@ -66,12 +66,12 @@ aws s3 ls --no-sign-request --endpoint-url https://s3.kopah.uw.edu 's3://stergac
 
 ### HPRCv2 FIRE Peaks
 
-  We provide pangenome graph-based union peak calls for the HPRCv2 Fiber-seq samples. These peaks are called on a pangenome graph and then projected to multiple coordinate systems. For full column definitions, thresholds, and methodology see the
+We provide pangenome graph-based union peak calls for the HPRCv2 Fiber-seq samples. These peaks are called on a pangenome graph and then projected to multiple coordinate systems. For full column definitions, thresholds, and methodology, see the
   [README](https://s3.kopah.uw.edu/stergachis/public/HPRCv2/FIRE-peaks/union-peaks-README.md) included in the bucket.
 
-  #### Available files
+#### Available files
 
-  **Union peaks** (every sample × consensus peak that passes in at least one sample):
+**Union peaks** (every sample × consensus peak that passes in at least one sample):
 
   | File | Coordinates |
   |------|-------------|
@@ -80,7 +80,7 @@ aws s3 ls --no-sign-request --endpoint-url https://s3.kopah.uw.edu 's3://stergac
   | `union-peaks-asm.bed.gz` | Per-sample assembly contigs |
   | `union-peaks-hg38.bed.gz` | GRCh38 liftover |
 
-  **Called peaks** (filtered to sites passing thresholds: FIRE coverage ≥ 4, fraction accessible ≥ 0.2):
+**Called peaks** (filtered to sites passing thresholds: FIRE coverage ≥ 4, fraction accessible ≥ 0.2):
 
   | File | Coordinates |
   |------|-------------|
@@ -89,16 +89,16 @@ aws s3 ls --no-sign-request --endpoint-url https://s3.kopah.uw.edu 's3://stergac
   | `peaks-asm.bed.gz` | Per-sample assembly contigs |
   | `peaks-hg38.bed.gz` | GRCh38 liftover |
 
-  All files are bgzipped BED files with a `#chrom` header line and tabix indices (`.tbi`).
+All files are bgzipped BED files with a `#chrom` header line and tabix indices (`.tbi`).
 
-  #### Download
+#### Download
 
-  Browse available files:
+Browse available files:
+```bash
+aws s3 ls --no-sign-request --endpoint-url https://s3.kopah.uw.edu 's3://stergachis/public/HPRCv2/FIRE-peaks/'
+```
 
-  ```bash
-  aws s3 ls --no-sign-request --endpoint-url https://s3.kopah.uw.edu 's3://stergachis/public/HPRCv2/FIRE-peaks/'
-
-  Download all peak files:
-
-  aws s3 sync --no-sign-request --endpoint-url https://s3.kopah.uw.edu s3://stergachis/public/HPRCv2/FIRE-peaks/ ./FIRE-peaks/
-  ```
+Download all peak files:
+```bash
+aws s3 sync --no-sign-request --endpoint-url https://s3.kopah.uw.edu s3://stergachis/public/HPRCv2/FIRE-peaks/ ./FIRE-peaks/
+```

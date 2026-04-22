@@ -66,7 +66,7 @@ aws s3 ls --no-sign-request --endpoint-url https://s3.kopah.uw.edu 's3://stergac
 
 ### HPRCv2 FIRE Peaks
 
-We provide pangenome graph-based union peak calls for the HPRCv2 Fiber-seq samples. These peaks are called on a pangenome graph and then projected to multiple coordinate systems. For full column definitions, thresholds, and methodology, see the
+We provide pangenome graph-based union peak calls for the HPRCv2 Fiber-seq samples. These peaks are called on donor-specific assemblies and then projected to multiple coordinate systems. For full column definitions, thresholds, and methodology, see the
   [README](https://s3.kopah.uw.edu/stergachis/public/HPRCv2/FIRE-peaks/union-peaks-README.md) included in the bucket.
 
 #### Available files
@@ -75,7 +75,7 @@ We provide pangenome graph-based union peak calls for the HPRCv2 Fiber-seq sampl
 
   | File | Coordinates |
   |------|-------------|
-  | `union-peaks-cons.bed.gz` | Pangenome graph consensus |
+  | `union-peaks-cons.bed.gz` | Pangenome graph consensus (shown in T2T-CHM13 coords when possible) |
   | `union-peaks-chm13.bed.gz` | T2T-CHM13 reference paths |
   | `union-peaks-asm.bed.gz` | Per-sample assembly contigs |
   | `union-peaks-hg38.bed.gz` | GRCh38 liftover |
@@ -84,7 +84,7 @@ We provide pangenome graph-based union peak calls for the HPRCv2 Fiber-seq sampl
 
   | File | Coordinates |
   |------|-------------|
-  | `peaks-cons.bed.gz` | Pangenome graph consensus |
+  | `peaks-cons.bed.gz` | Pangenome graph consensus (shown in T2T-CHM13 coords when possible) |
   | `peaks-chm13.bed.gz` | T2T-CHM13 reference paths |
   | `peaks-asm.bed.gz` | Per-sample assembly contigs |
   | `peaks-hg38.bed.gz` | GRCh38 liftover |

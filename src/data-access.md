@@ -63,3 +63,42 @@ You can find these CRAMs in the following S3 bucket. Data is aligned both to the
 ```bash
 aws s3 ls --no-sign-request --endpoint-url https://s3.kopah.uw.edu 's3://stergachis/public/HPRCv2/FIRE-bams/'
 ```
+
+### HPRCv2 FIRE Peaks
+
+  We provide pangenome graph-based union peak calls for the HPRCv2 Fiber-seq samples. These peaks are called on a pangenome graph and then projected to multiple coordinate systems. For full column definitions, thresholds, and methodology see the
+  [README](https://s3.kopah.uw.edu/stergachis/public/HPRCv2/FIRE-peaks/union-peaks-README.md) included in the bucket.
+
+  #### Available files
+
+  **Union peaks** (every sample × consensus peak that passes in at least one sample):
+
+  | File | Coordinates |
+  |------|-------------|
+  | `union-peaks-cons.bed.gz` | Pangenome graph consensus |
+  | `union-peaks-chm13.bed.gz` | T2T-CHM13 reference paths |
+  | `union-peaks-asm.bed.gz` | Per-sample assembly contigs |
+  | `union-peaks-hg38.bed.gz` | GRCh38 liftover |
+
+  **Called peaks** (filtered to sites passing thresholds: FIRE coverage ≥ 4, fraction accessible ≥ 0.2):
+
+  | File | Coordinates |
+  |------|-------------|
+  | `peaks-cons.bed.gz` | Pangenome graph consensus |
+  | `peaks-chm13.bed.gz` | T2T-CHM13 reference paths |
+  | `peaks-asm.bed.gz` | Per-sample assembly contigs |
+  | `peaks-hg38.bed.gz` | GRCh38 liftover |
+
+  All files are bgzipped BED files with a `#chrom` header line and tabix indices (`.tbi`).
+
+  #### Download
+
+  Browse available files:
+
+  ```bash
+  aws s3 ls --no-sign-request --endpoint-url https://s3.kopah.uw.edu 's3://stergachis/public/HPRCv2/FIRE-peaks/'
+
+  Download all peak files:
+
+  aws s3 sync --no-sign-request --endpoint-url https://s3.kopah.uw.edu s3://stergachis/public/HPRCv2/FIRE-peaks/ ./FIRE-peaks/
+  ```

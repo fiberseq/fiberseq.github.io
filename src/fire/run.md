@@ -14,11 +14,19 @@ The FIRE pipeline is a Snakemake workflow for calling Fiber-seq Inferred Regulat
 
 Please start by installing [pixi](https://pixi.sh/latest/) which handles the environment of the FIRE workflow.
 
-Then install FIRE using `git` and `pixi`:
+Then install the latest [tagged release](https://github.com/fiberseq/FIRE/releases) of FIRE using `git` and `pixi`:
 
 ```bash
-git clone https://github.com/fiberseq/FIRE.git
+git clone -b $(basename $(curl -fsSLo /dev/null -w '%{url_effective}' https://github.com/fiberseq/FIRE/releases/latest)) https://github.com/fiberseq/FIRE.git
 cd FIRE
+pixi install
+```
+
+To update an existing installation to the latest release:
+
+```bash
+git fetch --tags
+git checkout $(git describe --tags --abbrev=0 origin/main)
 pixi install
 ```
 

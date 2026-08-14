@@ -17,9 +17,8 @@ Please start by installing [pixi](https://pixi.sh/latest/) which handles the env
 Then install the latest [tagged release](https://github.com/fiberseq/FIRE/releases) of FIRE using `git` and `pixi`:
 
 ```bash
-git clone https://github.com/fiberseq/FIRE.git
+git clone -b $(basename $(curl -fsSLo /dev/null -w '%{url_effective}' https://github.com/fiberseq/FIRE/releases/latest)) https://github.com/fiberseq/FIRE.git
 cd FIRE
-git checkout $(git describe --tags --abbrev=0)
 pixi install
 ```
 

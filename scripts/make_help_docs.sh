@@ -1,17 +1,15 @@
 #!/usr/bin/env bash
+set -euo pipefail
 
-echo $LIBTORCH
-export LD_LIBRARY_PATH=${LIBTORCH}/lib:$LD_LIBRARY_PATH
-export DYLD_LIBRARY_PATH=${LIBTORCH}/lib:$LD_LIBRARY_PATH
-FT=../fibertools-rs/target/debug/ft
+# ponytail: uses the globally installed ft (cargo install fibertools-rs); override with FT=/path/to/ft
+FT=${FT:-ft}
 
 out="src/fibertools/help.md"
 echo "# Help pages for fibertools subcommands" >$out
 echo "" >>$out
 
-for subcommand in "" "predict-m6a" "fire" "extract" "center" "add-nucleosomes" "footprint" "clear-kinetics" "strip-basemods" "track-decorators" "pileup" "qc"; do
+for subcommand in "" "predict-m6a" "add-nucleosomes" "fire" "extract" "center" "footprint" "qc" "track-decorators" "pileup" "clear-kinetics" "strip-basemods" "validate" "call-peaks"; do
     echo $subcommand
-    #out="docs/ft-${subcommand}-help.md"
 
     echo "## \`ft $subcommand\`" >>$out
     echo '```console' >>$out

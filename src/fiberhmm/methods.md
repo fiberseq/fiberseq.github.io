@@ -2,44 +2,52 @@
 
 ## The problem
 
-Single-molecule chromatin assays (Fiber-seq, DAF-seq) mark accessible DNA with enzymatic modifications -- m6A methylation or cytosine deamination. But the efficiency of these enzymes depends on the local sequence context: some hexamers are methylated much more readily than others, even in fully accessible DNA. Without accounting for this, a naive threshold would over-call footprints in low-efficiency contexts and under-call them in high-efficiency ones.
+Single-molecule chromatin assays mark accessible DNA: m6A methylation by
+Hia5, or cytosine deamination by DddA/DddB. Marking efficiency depends
+strongly on the local sequence: in accessible DNA some contexts are marked
+most of the time, others rarely. A threshold that ignores this over-calls
+footprints in poor contexts and misses them in good ones, and small
+footprints (10–30 bp for a transcription factor) are lost in the noise.
 
-## The approach
+![FiberHMM's three calling steps](img/calling-steps.png)
 
-FiberHMM uses a two-state hidden Markov model where:
+*Reads from each chemistry go through `fiberhmm-call` in three steps: HMM segmentation (gray), nucleosome refinement (green) and footprint refinement (sky blue). The calls are written to the BAM as `MA` tags for FiberBrowser, FIRE and other tools. From the [preprint](https://www.biorxiv.org/content/10.64898/2026.10.29.762797v1).*
 
-- **State 0 (inaccessible)**: The DNA is nucleosome-protected or otherwise inaccessible. Modification rates are low.
-- **State 1 (accessible)**: The DNA is in a methylase-sensitive patch (MSP). Modification rates are high.
+## The model
 
-The key insight is that emission probabilities are learned per sequence context (hexamer) from control data, so the model knows the expected modification rate for each context in each state. This allows it to correctly interpret a low modification rate at a context that is inherently hard to methylate versus a genuinely protected region.
+For every target base FiberHMM takes the *k* bases on each side from the read
+(a 7-mer for *k* = 3; no reference is needed) and looks up, in an emission
+table estimated from accessible and inaccessible controls, the probability of
+a mark in the protected and in the accessible state.
 
-## Pipeline steps
+1. **HMM.** A two-state HMM (protected, accessible) with these
+   context-specific emissions is decoded with Viterbi. Protected runs are
+   footprints; the accessible stretches between nucleosome-sized footprints
+   are MSPs. For DddA, CpG observations are left out (5-methylcytosine slows
+   deamination, so a methylated CpG looks protected) except inside CpG
+   islands called unmethylated by `fiberhmm-tag-m5c`.
+2. **Nucleosome recall.** Nucleosome-sized footprints are re-examined for
+   buried linkers (accessible evidence inside the footprint) and split there,
+   and each piece gets conservative edges from its protected evidence. For
+   DddA, which also deaminates inside nucleosomes, a phase-aware radial caller
+   places nucleosomes from the helically phased deamination profile instead.
+3. **TF recall.** Inside accessible regions, a log-likelihood-ratio recaller
+   chooses the set of protected intervals that maximizes the summed
+   protected-versus-accessible evidence minus a fixed cost per interval
+   (5 nats), an exact linear-time dynamic program. Each call gets
+   `tq = 10 × LLR` and edge-sharpness bytes.
 
-### 1. Emission probability estimation
+Emission tables come from `fiberhmm-probs` (control BAMs) and transitions
+from `fiberhmm-train` (Baum-Welch). Tables are indexed by the encoder's
+context code (bases numbered A, C, T, G).
 
-Control BAMs define how modification rates differ between accessible and inaccessible states:
+## Across molecules
 
-- **Accessible control** (e.g., naked DNA treated with methyltransferase): Gives `P(modified | accessible, context)` for each hexamer
-- **Inaccessible control** (e.g., native chromatin): Gives `P(modified | inaccessible, context)` for each hexamer
+`fiberhmm-consensus` discovers recurrent footprint classes from confident
+per-read calls and scores every molecule's own marks against them with EM,
+per strand or channel, reporting each class's prevalence, support and
+per-molecule membership. `fiberhmm-transfer` measures frozen classes in new
+data.
 
-These context-specific emission probabilities are stored as TSV tables, one per context size `k`.
-
-### 2. Training
-
-The Baum-Welch (EM) algorithm learns the transition probabilities and start probabilities from sample data, while the emission probabilities remain fixed from the control data. Multiple random initializations are used to avoid local optima, and the model with the best log-likelihood is selected.
-
-### 3. Decoding
-
-The Viterbi algorithm finds the most likely state sequence for each read. Contiguous runs of state 0 become footprints; contiguous runs of state 1 become MSPs. Optionally, the forward-backward algorithm computes posterior probabilities for per-footprint confidence scores.
-
-## Sequence context encoding
-
-Each position on a read is encoded as a hexamer centered on the target base (for `k=3`, a 7-mer). The hexamer is mapped to an integer code using a deterministic lookup table. For PacBio fiber-seq, reverse complement contexts are merged to account for double-stranded m6A detection. The total number of symbols is `4^(2k)` (or `4^(2k) * 2` with separate modified/unmodified codes).
-
-Context is computed directly from the read sequence -- no genome reference or context files are needed.
-
-## Why context matters for small footprints
-
-Nucleosome-scale footprints (~150 bp) are large enough that context biases average out over the footprint length. But for smaller features -- transcription factor binding sites (~10-30 bp), Pol II (~50 bp) -- individual hexamer biases dominate the signal. A 20 bp stretch of low-efficiency contexts can look identical to a genuine TF footprint if context isn't modeled.
-
-By learning the expected modification rate for each hexamer in each chromatin state, FiberHMM can distinguish true small footprints from context artifacts, enabling accurate sub-nucleosomal footprint calling.
+More detail: [How FiberHMM works](https://fiberseq.github.io/FiberHMM/concepts/how-it-works/)
+and [Footprint classes](https://fiberseq.github.io/FiberHMM/workflows/consensus/).

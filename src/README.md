@@ -9,6 +9,8 @@ This is also the book for the computational tools of [Fiber-seq](glossary.md#fib
 1) `fibertools` (`ft`) which is a CLI tool for **creating and interacting with Fiber-seq BAM** files. 
     * the `samtools` of [Fiber-seq](glossary.md#fiber-seq)
 2) [**<ins>F</ins>iber-seq <ins>I</ins>nferred <ins>R</ins>egulatory <ins>E</ins>lements**](fire/fire.md) which is a method for identifying regulatory elements on individual [fibers](glossary.md#fiber-seq-read-or-fiber) and peak calling.
+
+It also covers [FiberHMM](fiberhmm/fiberhmm.md), which calls nucleosomes, accessible patches and transcription-factor footprints on single molecules, and [FiberBrowser](fiberbrowser/fiberbrowser.md), a genome browser for exploring them molecule by molecule ([preprint](https://www.biorxiv.org/content/10.64898/2026.10.29.762797v1)).
     * the `MACS2` of [Fiber-seq](glossary.md#fiber-seq)
 
 Some **Key features** include:

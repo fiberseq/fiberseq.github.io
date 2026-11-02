@@ -35,6 +35,12 @@
 
 ---
 
+- [FiberBrowser](fiberbrowser/fiberbrowser.md)
+    - [Getting started](fiberbrowser/getting-started.md)
+    - [A tour of the features](fiberbrowser/features.md)
+
+---
+
 - [FIRE](fire/fire.md)
     - [Running and installing](fire/run.md)
     - [Outputs](fire/outputs.md)

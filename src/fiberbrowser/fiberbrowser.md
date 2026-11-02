@@ -7,9 +7,9 @@ FiberBrowser is an interactive genome browser for single-molecule chromatin data
 
 The footprints come from [FiberHMM](../fiberhmm/fiberhmm.md), which FiberBrowser installs and runs. FiberHMM writes its calls into the BAM as Molecular-annotation tags, so the same calls feed FiberBrowser, FIRE and your own scripts.
 
-![The FiberBrowser interface and joint clustering of three datasets at NANOG](img/fig3-fiberbrowser-interface.png)
+![FiberBrowser at NANOG: H1 Fiber-seq molecules clustered on accessibility, with the Clusters panel](img/interface-nanog.png)
 
-*From the [FiberBrowser preprint](https://www.biorxiv.org/content/10.64898/2026.10.29.762797v1) (Fig. 3). **a**, The interface with one H1 Fiber-seq dataset at NANOG: (1) file and session controls, (2) locus and panel navigation, (3) the toolbar of molecule operations (layers, scanning, clustering, sorting and filtering), (4) the dataset panel header, (5) peak and custom-feature tracks, (6) the nucleosome (green) and footprint (sky blue) metaprofile, (7) molecule rows drawn from their FiberHMM calls, (8) the cluster-membership strip, (9) the analysis sidebar, here the Clusters panel, and (10) the rail that opens analysis panels. **b**, Joint clustering of lymphoblastoid (GM12878) and embryonic stem cell (H9, H1) Fiber-seq on accessibility at the NANOG promoter and a nearby enhancer, with the per-dataset share of each cluster.*
+*H1 Fiber-seq at NANOG. Each row is one molecule, grouped into three clusters by its footprints at the selected peaks; the Clusters panel on the right shows their sizes and average profiles. From the [preprint](https://www.biorxiv.org/content/10.64898/2026.10.29.762797v1).*
 
 ## What you can do with it
 

@@ -9,9 +9,9 @@ most of the time, others rarely. A threshold that ignores this over-calls
 footprints in poor contexts and misses them in good ones, and small
 footprints (10–30 bp for a transcription factor) are lost in the noise.
 
-![FiberHMM's three calling steps across four chemistries](img/fig1-fiberhmm-chemistries.png)
+![FiberHMM's three calling steps](img/calling-steps.png)
 
-*From the [FiberBrowser preprint](https://www.biorxiv.org/content/10.64898/2026.10.29.762797v1) (Fig. 1). **a**, Reads from each chemistry are processed by `fiberhmm-call` in three steps, shown on one real 600-bp window per assay: HMM segmentation into protected (gray) and accessible DNA, nucleosome refinement at linkers (green) and footprint refinement (sky blue). The calls are written to the BAM as Molecular-annotation (`MA`) tags and read by FiberBrowser, FIRE and downstream analyses. **b**, Possible sites per 100 bp and event probabilities in protected and accessible DNA for each assay. **c**, Footprint- and nucleosome-length distributions; dotted curves, HMM segmentation alone.*
+*Reads from each chemistry go through `fiberhmm-call` in three steps: HMM segmentation (gray), nucleosome refinement (green) and footprint refinement (sky blue). The calls are written to the BAM as `MA` tags for FiberBrowser, FIRE and other tools. From the [preprint](https://www.biorxiv.org/content/10.64898/2026.10.29.762797v1).*
 
 ## The model
 

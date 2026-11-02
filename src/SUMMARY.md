@@ -35,6 +35,10 @@
 
 ---
 
+- [FiberBrowser](fiberbrowser/fiberbrowser.md)
+
+---
+
 - [FIRE](fire/fire.md)
     - [Running and installing](fire/run.md)
     - [Outputs](fire/outputs.md)

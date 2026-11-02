@@ -36,6 +36,8 @@
 ---
 
 - [FiberBrowser](fiberbrowser/fiberbrowser.md)
+    - [Getting started](fiberbrowser/getting-started.md)
+    - [A tour of the features](fiberbrowser/features.md)
 
 ---
 

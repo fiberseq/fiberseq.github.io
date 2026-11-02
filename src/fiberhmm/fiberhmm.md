@@ -25,8 +25,7 @@ This chapter is a short overview:
 - [Pre-trained models](models.md)
 - [How it works](methods.md)
 
-The current release is FiberHMM 3.0.2. To look at its footprints molecule by
-molecule, use [FiberBrowser](../fiberbrowser/fiberbrowser.md). FiberHMM and
+To look at its footprints molecule by molecule, use [FiberBrowser](../fiberbrowser/fiberbrowser.md). FiberHMM and
 FiberBrowser are described in our
 [bioRxiv preprint](https://www.biorxiv.org/content/10.64898/2026.10.29.762797v1);
 see [Cite](../cite.md).

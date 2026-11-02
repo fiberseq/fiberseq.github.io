@@ -1,47 +1,29 @@
 # Pre-trained models
 
-FiberHMM ships with pre-trained models in the `models/` directory. These can be used directly with `fiberhmm-apply` without needing to generate emission probabilities or train from scratch.
+Models ship inside the package; `--enzyme` (and `--seq` for Hia5) selects
+them, and `-m` is only for custom models.
 
-## Available models
+| Chemistry | `--enzyme` | `--seq` | Model | Mode |
+|-----------|-----------|---------|-------|------|
+| Hia5 Fiber-seq, PacBio | `hia5` | `pacbio` | `hia5_pacbio.json` | `pacbio-fiber` |
+| Hia5 Fiber-seq, Nanopore | `hia5` | `nanopore` | `hia5_nanopore.json` | `nanopore-fiber` |
+| DddB DAF-seq | `dddb` | any | `dddb_nanopore.json` | `daf` |
+| DddA DAF-seq | `ddda` | any | `ddda_nuc.json` (nucleosome HMM), `ddda_TF.json` (TF recall), `ddda_nuc_profile.json` (rotational profile) and `ddda_nuc_refine.json` (internal radial-nucleosome likelihoods) | `daf` |
 
-| Model | File | Enzyme | Platform | Mode | Organism |
-|-------|------|--------|----------|------|----------|
-| **Hia5 PacBio** | `hia5_pacbio.json` | Hia5 (m6A) | PacBio | `pacbio-fiber` | Drosophila |
-| **Hia5 Nanopore** | `hia5_nanopore.json` | Hia5 (m6A) | Nanopore | `nanopore-fiber` | Yeast |
-| **DddA PacBio** | `ddda_pacbio.json` | DddA (deamination) | PacBio | `daf` | Drosophila |
-| **DddB Nanopore** | `dddb_nanopore.json` | DddB (deamination) | Nanopore | `daf` | Drosophila |
+`fiberhmm-call --enzyme ddda` uses all four DddA files in one pass. Each
+preset has its own defaults: for example Nanopore Hia5 reads m6A at ML ≥ 248,
+and DddA uses phase-aware radial nucleosome recall and CpG-aware calling
+(CpGs masked in the HMM and in recall outside unmethylated islands).
+See [Chemistries and platforms](https://fiberseq.github.io/FiberHMM/concepts/chemistries/).
 
-## Using a pre-trained model
-
-```bash
-# PacBio Hia5 fiber-seq
-fiberhmm-apply -i experiment.bam -m models/hia5_pacbio.json -o output/ -c 8
-
-# Nanopore Hia5 fiber-seq
-fiberhmm-apply -i experiment.bam -m models/hia5_nanopore.json -o output/ -c 8
-
-# DAF-seq (DddA or DddB)
-fiberhmm-apply -i experiment.bam -m models/ddda_pacbio.json -o output/ -c 8 --mode daf
-```
-
-The mode and context size are stored in the model JSON and auto-detected at runtime, so you generally do not need to specify `--mode` or `-k` when using a pre-trained model.
-
-## When to train your own model
-
-The pre-trained models work well as a starting point, but you may want to train a custom model if:
-
-- You are working with a different organism where chromatin structure differs substantially
-- You are using a different methyltransferase or deaminase chemistry
-- You have matched accessible and inaccessible controls for your specific experiment
-
-See the [usage guide](usage.md) for the full training pipeline.
-
-## Inspecting a model
-
-You can inspect any model's parameters with:
+Older tables, including the 2.x Nanopore Hia5 and DddB tables
+(`hia5_nanopore_gt_swapped_legacy.json`, `dddb_nanopore_gt_swapped_legacy.json`), are kept in
+`fiberhmm/models/legacy/` to reproduce earlier results.
 
 ```bash
-fiberhmm-utils inspect models/hia5_pacbio.json
+fiberhmm-utils inspect model.json      # mode, context size, transitions, emission summary
 ```
 
-This prints the mode, context size, start probabilities, transition matrix, and emission probability summary statistics.
+Train your own model for another enzyme or with matched controls for your
+condition: see [Training a model](https://fiberseq.github.io/FiberHMM/workflows/training/)
+and [Bundled models](https://fiberseq.github.io/FiberHMM/reference/models/).
